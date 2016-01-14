@@ -1,0 +1,17 @@
+~/.babelrc*
+~/.bashrc*
+~/.bashrc.local
+~/.bin
+~/.config/nvim
+~/.clang_complete
+~/.esformatter*
+~/.eslintrc*
+~/.gemrc*
+~/.gitconfig
+~/.ipython
+~/.pylintrc
+~/.pylint.d
+~/.tern-project*
+~/.zshrc
+~/.zshrc.local
+
