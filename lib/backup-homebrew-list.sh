@@ -19,5 +19,3 @@ echo "install_package $item '$(brew info $item | /usr/bin/grep 'Built from sourc
 done
 
 echo '[ ! -z $failed_items ] && echo The following items were failed to install: && echo $failed_items'
-
-

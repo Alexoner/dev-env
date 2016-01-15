@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# install homebrew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 failed_items=""
 function install_package() {
 echo EXECUTING: brew install $1 $2
