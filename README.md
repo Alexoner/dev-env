@@ -1,6 +1,11 @@
 # sync-sys
 Synchronize my my operating system
 
+# installation
+```shell
+sh <(curl https://raw.githubusercontent.com/Alexoner/synccf/master/bootstrap.sh -L)
+```
+
 ## Backup
 1. In the root of the repository
 ```shell

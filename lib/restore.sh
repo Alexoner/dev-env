@@ -11,7 +11,6 @@ brew install python, python3, node
 # brew install git
 
 # download synccf repository
-git clone https://github.com/Alexoner/synccf.git "$APP_PATH"
 cd "$HOME/.synccf" || exit 0
 
 #install neovim
