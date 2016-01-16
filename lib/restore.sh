@@ -35,6 +35,12 @@ do
     fi
 done
 
+if ! program_exists  nvim
+then
+    brew tap neovim/neovim
+    brew install neovim/neovim/neovim
+fi
+
 # download synccf repository
 cd "$HOME/.synccf" || exit 0
 
