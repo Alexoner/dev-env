@@ -1,0 +1,11 @@
+{
+ "display_name": "Python 3",
+ "language": "python",
+ "argv": [
+  "/usr/local/opt/python3/bin/python3.5",
+  "-m",
+  "ipykernel",
+  "-f",
+  "{connection_file}"
+ ]
+}

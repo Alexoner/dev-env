@@ -1,0 +1,19 @@
+pi
+pi
+pi
+ls
+cd Documeents
+ls
+pwd
+cd Documents
+ls
+cd mine/learningAI
+ls
+cd PRML
+init
+cd chapter10
+cd chapter10
+ls
+pwd
+ls
+demo

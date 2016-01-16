@@ -1,0 +1,9 @@
+#!/bin/sh
+#sslocal -s 54.178.202.41 -p 9206 -m aes-256-cfb -k alexishere -l 1080 &
+if [ $# > 1 ]
+then
+    ip=$1
+else
+    ip="52.69.37.169"
+fi
+sslocal -s $ip -p 9206 -m aes-256-cfb -k alexishere -l 1080 &

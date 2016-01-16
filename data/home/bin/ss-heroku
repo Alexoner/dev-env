@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd ~/Documents/soft/shadowsocks-heroku/
+nohup ./run.sh 2&>ss.log

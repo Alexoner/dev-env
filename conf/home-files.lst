@@ -1,4 +1,5 @@
 bin
+bin/**
 .babelrc*
 .bashrc*
 .bashrc.local
@@ -9,9 +10,7 @@ bin
 .jupyter*
 .gemrc*
 .gitconfig
-.ipython
+.ipython/kernels
 .pylintrc
-.pylint.d
 .tern-project*
-.zshrc
-.zshrc.local
+.zshrc*

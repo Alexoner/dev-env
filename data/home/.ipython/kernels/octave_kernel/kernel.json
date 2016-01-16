@@ -1,0 +1,1 @@
+{"argv": ["/usr/local/opt/python3/bin/python3.5", "-m", "octave_kernel", "-f", "{connection_file}"], "display_name": "Octave", "language": "octave", "name": "octave_kernel"}
