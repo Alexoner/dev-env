@@ -76,14 +76,20 @@ fi
 #install brew packages
 "$BASEDIR../data/homebrew/restore-homebrew.sh"
 #install python packages
-python -m easy_install pip
-python3 -m easy_install pip
+sudo python -m easy_install pip
+sudo python3 -m easy_install pip, virtualenv
 install_python2_packages() {
-    sudo python -m pip install -r "$BASEDIR/../data/python/requirement2.txt" 
+    virtualenv "$HOME/.python2" -p python || return 1
+    source "$HOME/.python3/bin/activate"
+    python -m pip install -r "$BASEDIR/../data/python/requirement2.txt" 
+    deactivate
 }
 
 install_python3_packages() {
-    sudo python3 -m pip install -r "$BASEDIR/../data/python/requirement3.txt" 
+    virtualenv "$HOME/.python3" -p python3 || return 1
+    source "$HOME/.python3/bin/activate"
+    python3 -m pip install -r "$BASEDIR/../data/python/requirement3.txt" 
+    deactivate
 }
 
 install_python2_packages
