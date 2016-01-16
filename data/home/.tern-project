@@ -1,0 +1,31 @@
+{
+    "libs": [
+        "browser",
+        "chai",
+        "ecma5",
+        "ecma6",
+        "jquery",
+        "underscore"
+    ],
+    "loadEagerly": [
+        "importantfile.js"
+    ],
+    "plugins": {
+        "doc_comment": {},
+        "complete_strings": {},
+        "commonjs": {},
+        "node": {},
+        "node_resolve": {},
+        "modules": {
+            "dontLoad": false
+        },
+        "es_modules": {},
+        "requirejs": {
+            "baseURL": "./",
+            "paths": {}
+        },
+        "eslint": {},
+        "react": {},
+        "fetch": {}
+    }
+}
