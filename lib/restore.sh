@@ -55,6 +55,7 @@ fi
 curl https://raw.githubusercontent.com/Alexoner/spf13-vim/3.0/bootstrap.sh -L > spf13-vim.sh && sh spf13-vim.sh &
 # install powerline fonts for vim
 git clone https://github.com/powerline/fonts.git /tmp/fonts && cd /tmp/fonts && sh /tmp/fonts/install.sh &
+cd "$HOME/.synccf" || exit 0
 
 #install shadowsocks-heroku
 SOFT_DIR="$HOME/Documents/soft"
@@ -64,6 +65,7 @@ cd "$SOFT_DIR/shadowsocks-heroku" && npm install
 echo '#!/bin/sh' > run.sh
 echo 'node local.js -s xxx-island.herokuapp.com -l 1081 -m rc4 -k xxx11yy -r 80 1>> ss.log  2> ss.log' >> run.sh
 chmod +x run.sh
+cd "$HOME/.synccf" || exit 0
 
 #install brew packages
 "$BASEDIR../data/homebrew/restore-homebrew.sh" &
