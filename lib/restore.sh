@@ -77,7 +77,7 @@ fi
 "$BASEDIR../data/homebrew/restore-homebrew.sh"
 #install python packages
 sudo python -m easy_install pip
-sudo python3 -m easy_install pip, virtualenv
+sudo python3 -m easy_install pip virtualenv
 install_python2_packages() {
     virtualenv "$HOME/.python2" -p python || return 1
     source "$HOME/.python3/bin/activate"
