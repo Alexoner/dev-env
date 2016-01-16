@@ -45,15 +45,16 @@ fi
 cd "$HOME/.synccf" || exit 0
 
 #install neovim
-#install my vim conf
 brew tap neovim
 if ! program_exists "$i"
 then
-    brew install neovim/neovim/neovim && curl https://raw.githubusercontent.com/Alexoner/spf13-vim/3.0/bootstrap.sh -L > spf13-vim.sh && sh spf13-vim.sh
+    brew install neovim/neovim/neovim &
 fi
 
+#install my vim conf
+curl https://raw.githubusercontent.com/Alexoner/spf13-vim/3.0/bootstrap.sh -L > spf13-vim.sh && sh spf13-vim.sh &
 # install powerline fonts for vim
-git https://github.com/powerline/fonts.git /tmp/fonts && cd /tmp/fonts && sh /tmp/fonts/install.sh
+git clone https://github.com/powerline/fonts.git /tmp/fonts && cd /tmp/fonts && sh /tmp/fonts/install.sh &
 
 #install shadowsocks-heroku
 SOFT_DIR="$HOME/Documents/soft"
@@ -77,8 +78,8 @@ install_python3_packages() {
     sudo python3 -m pip install -r "$BASEDIR/../data/python/requirement3.txt" 
 }
 
-install_python2_packages &
-install_python3_packages &
+install_python2_packages
+install_python3_packages
 
 # install on-my-zsh
 if ! program_exists upgrade_oh_my_zsh
