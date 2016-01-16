@@ -74,7 +74,7 @@ if [ ! -e "$HOME/Documents/soft/shadowsocks-heroku" ]; then
 fi
 
 #install brew packages
-"$BASEDIR../data/homebrew/restore-homebrew.sh"
+sh "$BASEDIR../data/homebrew/restore-homebrew.sh"
 #install python packages
 sudo python -m easy_install pip
 sudo python3 -m easy_install pip virtualenv
