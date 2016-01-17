@@ -51,24 +51,24 @@ then
     brew install neovim/neovim/neovim
 fi
 
+SOFT_DIR="$HOME/Documents/soft"
 if [ ! -e "$HOME/.spf13-vim-3" ]; then
     #install my vim conf
     curl https://raw.githubusercontent.com/Alexoner/spf13-vim/3.0/bootstrap.sh -L > spf13-vim.sh && sh spf13-vim.sh
     # install powerline fonts for vim
-    git clone https://github.com/powerline/fonts.git /tmp/fonts && cd /tmp/fonts && sh /tmp/fonts/install.sh
+    git clone https://github.com/powerline/fonts.git "$SOFT_DIR/fonts" && sh "$SOFT_DIR/fonts/install.sh"
     cd "$HOME/.synccf" || exit 0
 elif [ ! -d "$HOME/.spf13-vim-3" ]; then
     echo "$HOME/.spf13-vim-3 exists but not a directory"
 fi
 
 #install shadowsocks-heroku
-SOFT_DIR="$HOME/Documents/soft"
 if [ ! -e "$HOME/Documents/soft/shadowsocks-heroku" ]; then
     mkdir -p "$SOFT_DIR"
     git clone https://github.com/mrluanma/shadowsocks-heroku.git "$SOFT_DIR/shadowsocks-heroku"
     cd "$SOFT_DIR/shadowsocks-heroku" && npm install
     echo '#!/bin/sh' > run.sh
-    echo 'node local.js -s xxx-island.herokuapp.com -l 1081 -m rc4 -k xxx11yy -r 80 1>> ss.log  2> ss.log' >> run.sh
+    echo 'node "$(dirname $0)/local.js" -s xxx-island.herokuapp.com -l 1081 -m rc4 -k xxx11yy -r 80 1>> ss.log  2> ss.log' >> run.sh
     chmod +x run.sh
     cd "$HOME/.synccf" || exit 0
 fi
@@ -79,17 +79,19 @@ sh "$BASEDIR../data/homebrew/restore-homebrew.sh"
 sudo python -m easy_install pip
 sudo python3 -m easy_install pip virtualenv
 install_python2_packages() {
-    virtualenv "$HOME/.python2" -p python || return 1
-    source "$HOME/.python3/bin/activate"
-    python -m pip install -r "$BASEDIR/../data/python/requirement2.txt" 
-    deactivate
+    # virtualenv "$HOME/.python2" -p python || return 1
+    # source "$HOME/.python3/bin/activate"
+    brew install python || return 1
+    python -m pip install -r "$BASEDIR/../data/python/requirement2.txt"
+    # deactivate
 }
 
 install_python3_packages() {
-    virtualenv "$HOME/.python3" -p python3 || return 1
-    source "$HOME/.python3/bin/activate"
+    # virtualenv "$HOME/.python3" -p python3 || return 1
+    # source "$HOME/.python3/bin/activate"
+    brew install python3 || return 1
     python3 -m pip install -r "$BASEDIR/../data/python/requirement3.txt" 
-    deactivate
+    # deactivate
 }
 
 install_python2_packages
@@ -109,9 +111,10 @@ fi
 
 if [ -f "$HOME/.zshrc" ]
 then
-    echo "source $APP_PATH/home/.zshrc" >> "$HOME/.zsshrc"
+    echo "source $APP_PATH/home/.zshrc" >> "$HOME/.zshrc"
 fi
 
-ln -sv "$APP_PATH/home/*" "$HOME/"
+ln -sv "$APP_PATH/data/home/*" "$HOME/"
+ln -sv "$APP_PATH/data/home/.*" "$HOME"
 
 wait
