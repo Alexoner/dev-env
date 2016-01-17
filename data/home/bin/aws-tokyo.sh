@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ $# > 2 ]; then
+if [ $# -gt 0 ]; then
     ip=$1
 else
     ip="52.69.37.169"

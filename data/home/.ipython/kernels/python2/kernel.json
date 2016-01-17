@@ -2,7 +2,7 @@
  "display_name": "Python 2", 
  "language": "python", 
  "argv": [
-  "/usr/bin/python", 
+  "python2", 
   "-m", 
   "ipykernel", 
   "-f", 
