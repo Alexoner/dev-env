@@ -1,5 +1,7 @@
  -DDEBUG
  -include ../config.h
  -I../common
+ -I/usr/include
  -I/usr/include/c++/4.2.1
+ -I/usr/local/include
  -I/usr/include/c++/4.2.1/x86_64-slackware-linux/

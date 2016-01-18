@@ -118,3 +118,9 @@ ln -sv "$APP_PATH/data/home/*" "$HOME/"
 ln -sv "$APP_PATH/data/home/.*" "$HOME"
 
 wait
+
+# generate ssh keygen
+ssh-keygen -t rsa -C "duhao.dh@alibaba-inc.com"
+
+# install apple's developing command line tool
+"$BASEDIR/install-osx-dev.sh"
