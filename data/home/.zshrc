@@ -25,3 +25,6 @@ alias esformatter="esformatter -c ~/.esformatter"
 export PATH="$HOME/.cargo/bin:/usr/local/sbin:$PATH"
 
 export RUST_SRC_PATH="${HOME}/Documents/mine/rust/src/src"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
