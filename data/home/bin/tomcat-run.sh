@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # export CATALINA_HOME=~/
-for i in `ls $CATALINA_HOME/deploy`
+for i in $($CATALINA_HOME/deploy/*)
 do
     if [ `basename $i` != "taobao-hsf.sar" ]
     then

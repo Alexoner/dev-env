@@ -15,4 +15,3 @@ do
     fi
     diff $original $file > /tmp/$file.patch && patch $original -i /tmp/$file.patch -o $original.patched || echo $file | sed 's/'$src'/'$dst'/'
 done
-

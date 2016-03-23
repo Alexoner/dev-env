@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# iptables -t nat -I POSTROUTING -m state --state NEW -p tcp -dport 80 -o seth0 -m statistic --mode nth --every 2 --packet 0 -j SNAT --to-source xxx.xxx.xxx.19
+# iptables -t nat -I POSTROUTING -m state --state NEW -p tcp -dport 80 -d www.europerail.cn -o eth0 -m statistic --mode nth --every 5 --packet 0 -j SNAT --to-source xxx.xxx.xxx.1
 iptables -t nat -I POSTROUTING -m state --state NEW -p tcp -o seth0 -m statistic --mode nth --every 1 --packet 0 -j SNAT --to-source xxx.xxx.xxx.10
 iptables -t nat -I POSTROUTING -m state --state NEW -p tcp -o seth0 -m statistic --mode nth --every 2 --packet 0 -j SNAT --to-source xxx.xxx.xxx.11
 iptables -t nat -I POSTROUTING -m state --state NEW -p tcp -o seth0 -m statistic --mode nth --every 3 --packet 0 -j SNAT --to-source xxx.xxx.xxx.12
