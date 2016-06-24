@@ -31,16 +31,16 @@ setjdk 1.7
 
 alias ls="ls -G"
 
+alias vi="vim"
 alias vim="nvim"
 alias vimdiff="nvim -d"
 alias python2="python"
-#alias vi="nvim"
 alias mcp="mvn clean package -Dmaven.test.skip"
 alias mee="mvn eclipse:clean eclipse:eclipse"
 alias mci="mvn clean install -Dmaven.test.skip"
 
 
-export EDITOR=vim
+export EDITOR=nvim
 
 alias esformatter="esformatter -c ~/.esformatter"
 export PATH="$HOME/.cargo/bin:/usr/local/sbin:$PATH"

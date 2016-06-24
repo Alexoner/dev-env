@@ -1,11 +1,20 @@
 [user]
-	name = Alexoner
-	email = onerhao@gmail.com
+    name = Alexoner
+    email = onerhao@gmail.com
 [http]
     proxy = socks5://127.0.0.1:1080
 [https]
-    proxy = socks5://127.0.0.1:1080
+    proxy = socks5://127.0.0.1:1089
 [gui]
-	recentrepo = /Users/Alex/Documents/mine/learningAI
+    recentrepo = /Users/Alex/Documents/mine/learningAI
 [push]
-	default = matching
+    default = matching
+[filter "lfs"]
+    smudge = git-lfs smudge -- %f
+    required = true
+    clean = git-lfs clean -- %f
+[core]
+    autocrlf = false
+[lfs]
+    batch = true
+    concurrenttransfers = 128

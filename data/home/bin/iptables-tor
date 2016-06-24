@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# 9040 is the configured "TransPort" in file 'torrc'
+iptables -t nat -A OUTPUT -p tcp --syn -j REDIRECT --to-ports 9040
+
+# dns
+iptables -t nat -A OUTPUT -p udp --dport 53 -j REDIRECT --to-ports 53

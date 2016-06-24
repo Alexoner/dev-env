@@ -1,2 +1,7 @@
 #!/bin/sh
-ssh -i "$HOME/Documents/mine/credential/onerhao.pem" ubuntu@52.8.220.122
+if [ $# -gt 0 ]; then
+    ip=$1
+else
+    ip="52.69.37.169"
+fi
+ssh -i "/Users/Alex/Documents/mine/credential/aws-tokyo.pem" ubuntu@$ip

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+docker run -ti --volume=$HOME:/home/Alex -p 8888:8888 onerhao/ubuntu zsh

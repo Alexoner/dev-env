@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# root@118.193.255.138, DaaGetter2016
+
+sslocal -s 45.119.52.135 -p 8388 -l 1080 -k getter -m aes-256-cfb
