@@ -27,7 +27,7 @@ function setjdk() {
  function removeFromPath() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
  }
-setjdk 1.7
+setjdk 1.8
 
 alias ls="ls -G"
 
@@ -49,3 +49,8 @@ export RUST_SRC_PATH="${HOME}/Documents/mine/rust/src/src"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
+# JAVA
+export CLASSPATH=".:/usr/local/lib/antlr-4.5.3-complete.jar:$CLASSPATH"
+alias antlr4='java -jar /usr/local/lib/antlr-4.5.3-complete.jar'
+alias grun='java org.antlr.v4.gui.TestRig'
