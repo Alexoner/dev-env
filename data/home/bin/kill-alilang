@@ -1,3 +1,4 @@
 #!/bin/sh
 
 kill -9 $(ps -ef | grep AliLang.app | grep -v grep | awk '{print $2}')
+#kill -9 $(ps -ef | grep AliEntSafe.app | grep -v grep | awk '{print $2}')

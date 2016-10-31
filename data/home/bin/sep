@@ -19,6 +19,10 @@ stop() {
   echo $0: unloading Symantec Endpoint Protection shared settings daemon
   launchctl unload /Library/LaunchDaemons/com.symantec.sharedsettings.plist
 
+  echo $0: unloading Symantec Endpoint Protection live update daemon
+  launchctl unload /Library/LaunchDaemons/com.symantec.liveupdate.daemon.plist
+  launchctl unload /Library/LaunchDaemons/com.symantec.liveupdate.daemon.ondemand.plist
+
   echo $0: closing Symantec Endpoint Protection UI widget as $real_user
   sudo -u $real_user launchctl unload /Library/LaunchAgents/com.symantec.uiagent.application.plist
 }

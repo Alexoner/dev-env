@@ -23,8 +23,8 @@
   },
   "jsx": {
     "attrsOnSameLineAsTag": false,
-    "maxAttrsOnTag": 3,
-    "firstAttributeOnSameLine": true,
+    "maxAttrsOnTag": 1,
+    "firstAttributeOnSameLine": false,
     // default to one space. Make it empty if you don't like spaces between JSXExpressionContainers 
     "spaceInJSXExpressionContainers": " ",
     // align the attributes with the first attribute (if the first attribute was kept on the same line as on the open tag) 
@@ -65,7 +65,7 @@
   },
   "lineBreak": {
     "before": {
-      "AssignmentExpression": ">=0",
+      "AssignmentExpression": ">=1",
       "AssignmentOperator": 0,
       "BlockStatement": 1,
       "CallExpression": -1,
@@ -233,8 +233,8 @@
       "ForStatementSemicolon": 0,
       "FunctionDeclarationOpeningBrace": 1,
       "FunctionDeclarationClosingBrace": 1,
-      "FunctionExpressionOpeningBrace": 1,
-      "FunctionExpressionClosingBrace": 1,
+      "FunctionExpressionOpeningBrace": 0,
+      "FunctionExpressionClosingBrace": 0,
       "IfStatementConditionalOpening": 1,
       "IfStatementConditionalClosing": 1,
       "IfStatementOpeningBrace": 1,
@@ -267,10 +267,10 @@
       "ArrayExpressionOpening": 1,
       "ArrayExpressionClosing": 0,
       "ArrayExpressionComma": 0,
-      "ObjectExpressionClosingBrace": 1
+      "ObjectExpressionClosingBrace": 0
     },
     "after": {
-      "ObjectExpressionOpeningBrace": 1,
+      "ObjectExpressionOpeningBrace": 0,
       "ArrayExpressionOpening": 0,
       "ArrayExpressionClosing": 0,
       "ArrayExpressionComma": 1,

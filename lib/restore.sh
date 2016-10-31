@@ -111,7 +111,9 @@ fi
 
 if [ -f "$HOME/.zshrc" ]
 then
-    echo "source $APP_PATH/home/.zshrc" >> "$HOME/.zshrc"
+    mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
+    ln -s "source $APP_PATH/home/.zshrc" "$HOME/.zshrc"
+    #echo "source $APP_PATH/home/.zshrc" >> "$HOME/.zshrc"
 fi
 
 ln -sv "$APP_PATH/data/home/*" "$HOME/"

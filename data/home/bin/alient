@@ -1,0 +1,50 @@
+#!/bin/sh
+
+# relaunch with sudo if we aren't root
+root() {
+	if [[ $EUID -ne 0 ]]; then
+		echo "$0: relaunching as sudo $0 $1 $USER"
+		sudo $0 $1 $USER
+		#sudo "$0" $1
+		exit $?
+	fi
+}
+
+
+stop() {
+	root $1
+	echo $0: unloading AliESD daemon
+
+	launchctl unload /Library/LaunchDaemons/com.alibaba.security.AliESD.plist || true
+
+	#chmod -x /Applications/AliLang.app/Contents/MacOS/AliLang
+	#chmod -x /Applications/AliEntSafe.app/Contents/MacOS/AliEntSafe
+	chmod -x /Applications/AliEntSafe.app/Contents/Services/AliESD
+	chmod -x /Applications/AliEntSafe.app/Contents/Services/AliUIS
+	chmod -x /Applications/AliEntSafe.app/Contents/Services/alicsaide
+	kill -KILL $(ps -ef | grep AliEntSafe.app | grep -v grep | awk '{print $2}')
+	echo $0: stopped ALiEnt daemon
+}
+
+start() {
+	root $1
+	echo $0: loading AliESD daemon
+
+	chmod +x /Applications/AliEntSafe.app/Contents/MacOS/AliEntSafe
+	chmod +x /Applications/AliEntSafe.app/Contents/Services/AliESD
+	chmod +x /Applications/AliEntSafe.app/Contents/Services/AliUIS
+
+	launchctl load /Library/LaunchDaemons/com.alibaba.security.AliESD.plist
+}
+
+case "$1" in
+	start)
+		start $1
+		;;
+	stop)
+		stop $1
+		;;
+	*)
+		echo "Usage: $0 [start|stop]"
+		;;
+esac
