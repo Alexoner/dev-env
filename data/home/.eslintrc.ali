@@ -191,6 +191,7 @@
     "react/jsx-sort-props": 0,
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
+    "react/jsx-filename-extension": 0,
     "react/no-danger": 1,
     "react/no-deprecated": 1,
     "react/no-did-mount-set-state": 1,

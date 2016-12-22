@@ -137,10 +137,8 @@ alias mci="mvn clean install -Dmaven.test.skip"
 alias esformatter="esformatter -c ~/.esformatter"
 export PATH="$HOME/.cargo/bin:/usr/local/sbin:$PATH"
 
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-
+# python
+source ~/.python3/bin/activate
 # JAVA
 export CLASSPATH=".:/usr/local/lib/antlr-4.5.3-complete.jar:$CLASSPATH"
 alias antlr4='java -jar /usr/local/lib/antlr-4.5.3-complete.jar'
@@ -161,6 +159,9 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 --userconfig=$HOME/.cnpmrc"
 
 alias npm="cnpm"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Deepdive
 export PATH="$HOME/Documents/soft/deepdive-v0.8-STABLE-Darwin/bin:$PATH"

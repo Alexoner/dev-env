@@ -18,7 +18,7 @@ stop() {
 	launchctl unload /Library/LaunchDaemons/com.alibaba.security.AliESD.plist || true
 
 	#chmod -x /Applications/AliLang.app/Contents/MacOS/AliLang
-	#chmod -x /Applications/AliEntSafe.app/Contents/MacOS/AliEntSafe
+	chmod -x /Applications/AliEntSafe.app/Contents/MacOS/AliEntSafe
 	chmod -x /Applications/AliEntSafe.app/Contents/Services/AliESD
 	chmod -x /Applications/AliEntSafe.app/Contents/Services/AliUIS
 	chmod -x /Applications/AliEntSafe.app/Contents/Services/alicsaide
