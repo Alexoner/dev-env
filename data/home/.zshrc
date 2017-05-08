@@ -127,12 +127,10 @@ alias ls="ls -G"
 alias vi="vim"
 alias vim="nvim"
 alias vimdiff="nvim -d"
-alias python2="python"
+#alias python2="python"
 alias mcp="mvn clean package -Dmaven.test.skip"
 alias mee="mvn eclipse:clean eclipse:eclipse"
 alias mci="mvn clean install -Dmaven.test.skip"
-
-
 
 alias esformatter="esformatter -c ~/.esformatter"
 export PATH="$HOME/.cargo/bin:/usr/local/sbin:$PATH"
@@ -165,3 +163,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # Deepdive
 export PATH="$HOME/Documents/soft/deepdive-v0.8-STABLE-Darwin/bin:$PATH"
+
+# Network
+#export ALL_PROXY="socks5://127.0.0.1:1080"

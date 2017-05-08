@@ -6,7 +6,7 @@
 [https]
 	proxy = socks5://127.0.0.1:1080
 [gui]
-    recentrepo = /Users/Alex/Documents/mine/dsa
+    recentrepo = /Users/Alex/Documents/mine/skynet
 [push]
     default = matching
 [filter "lfs"]
@@ -15,6 +15,7 @@
     clean = git-lfs clean -- %f
 [core]
     autocrlf = false
+	excludesfile = /Users/Alex/.gitignore
 [lfs]
     batch = true
     concurrenttransfers = 128
