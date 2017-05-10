@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo 'deb blah ... blah' | sudo tee --append /etc/apt/sources.list
