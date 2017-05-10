@@ -1,5 +1,8 @@
 # sync-sys
-Synchronize my my operating system
+Development environment setup in a bootstrapping approach.
+
+Setting up a development environment is boring and time consuming. It's better to eliminate the pain
+by automating it with scripts.
 
 # installation
 ```shell

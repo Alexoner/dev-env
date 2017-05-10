@@ -1,0 +1,6 @@
+#!/bin/sh
+
+URL=$1
+size=$(curl -sI $URL | grep Content-Length | awk '{print $2}')
+
+curl -C - -O $URL
