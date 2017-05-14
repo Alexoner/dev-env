@@ -17,9 +17,11 @@ set -s focus-events on
 
 # reset to default key bindings
 #unbind-key -a
+#set -g prefix2 C-a                        # GNU-Screen compatible prefix
+set -g prefix C-a                         # GNU-Screen compatible prefix
 unbind C-b
-set -g prefix2 C-a                        # GNU-Screen compatible prefix
-bind C-a send-prefix -2
+#bind C-a send-prefix -2
+bind C-a send-prefix
 
 set -q -g status-utf8 on                  # expect UTF-8 (tmux < 2.2)
 setw -q -g utf8 on
@@ -154,8 +156,8 @@ run 'cut -c3- ~/.tmux.conf | sh -s _apply_configuration'
 set -g @plugin 'tmux-plugins/tpm'
 #set -g @plugin 'tmux-plugins/tmux-sensible'
 #set -g @plugin 'seebi/tmux-colors-solarized'
-#set -g @plugin 'tmux-plugins/tmux-resurrect'
-#set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
 
 # Other examples:
 # set -g @plugin 'github_username/plugin_name'
