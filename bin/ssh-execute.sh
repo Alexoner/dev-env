@@ -1,8 +1,10 @@
 #!/bin/sh
 
-for ip in hosts
-do 
-	ssh user@ip 'bash -s' < local_script.sh
-done
+user=$1
+host=$2
 
-ssh user@host 'bash -s' < local_script.sh
+# execute local shell script
+ssh -t $user@$host 'bash -s' < local_script.sh
+
+# sudo over ssh command
+#ssh -t $user@$host "sudo ls"

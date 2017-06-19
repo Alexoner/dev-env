@@ -4,3 +4,39 @@ URL=$1
 size=$(curl -sI $URL | grep Content-Length | awk '{print $2}')
 
 curl -C - -O $URL
+
+#urls = [
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170222_1.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170222_2.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170301_1.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170301_2.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20160921_3.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170315_2.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170315_4.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170322_4.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170322_5.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170329_5.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170329_6.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170412_5.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170412_6.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170412_7.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170419_7.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170426_8.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170426_9.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170503_9.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170510_9.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170510_10.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170517_10.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170517_11.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170524_11.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170524_12.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170524_13.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170531_13.0.fsp.wmv/media.wmv",
+  #"http://speech.ee.ntu.edu.tw/DSP2017Spring/Videos/20170531_14.0.fsp.wmv/media.wmv"
+#]
+# download a batch of files and rename according to url
+cat urls|while read f
+do
+	echo $f; curl -o `echo $f|sed -e 's/^.*\(2017[0-9]*_[0-9]*\).*$/\1/g'`.wmv -C - -O $f
+done
+

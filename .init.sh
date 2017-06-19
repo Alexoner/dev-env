@@ -1,8 +1,25 @@
-export RUST_SRC_PATH="$HOME/.rust/src/src"
-############################## CUSTOMIZATION #############################
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:$HOME/bin:$PATH"
+############################## General ################################
+# bin path in home directory
+export PATH="$PATH:$HOME/bin"
+# locale
+export LANG=en_US.UTF-8
 
 export EDITOR=nvim
+alias ls="ls -G"
+alias vi="vim"
+alias vim="nvim"
+alias vimdiff="nvim -d"
+#alias python2="python"
+
+# Tmux
+export tmux_conf_new_window_retain_current_path=true
+
+# tex
+export PATH="$PATH:/Library/TeX/texbin"
+
+# RUST 
+export RUST_SRC_PATH="$HOME/.rust/src/src"
+export PATH="$HOME/.cargo/bin:/usr/local/sbin:$PATH"
 
 # jenv
 # homebrew installed version
@@ -31,33 +48,16 @@ function setjdk() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
  }
 #setjdk 1.8
-
-alias ls="ls -G"
-
-alias vi="vim"
-alias vim="nvim"
-alias vimdiff="nvim -d"
-#alias python2="python"
 alias mcp="mvn clean package -Dmaven.test.skip"
 alias mee="mvn eclipse:clean eclipse:eclipse"
 alias mci="mvn clean install -Dmaven.test.skip"
-
-alias esformatter="esformatter -c ~/.esformatter"
-export PATH="$HOME/.cargo/bin:/usr/local/sbin:$PATH"
 
 # JAVA
 export CLASSPATH=".:/usr/local/lib/antlr-4.5.3-complete.jar:$CLASSPATH"
 alias antlr4='java -jar /usr/local/lib/antlr-4.5.3-complete.jar'
 alias grun='java org.antlr.v4.gui.TestRig'
 
-# android
-export ANDROID_HOME="/usr/local/Cellar/android-sdk/24.4.1_1"
-
-
-# go
-export GOPATH="$HOME/.go"
-export PATH="$GOPATH/bin:${PATH}"
-
+alias esformatter="esformatter -c ~/.esformatter"
 # npm
 alias cnpm="npm --registry=https://registry.npm.taobao.org \
 --cache=$HOME/.npm/.cache/cnpm \
@@ -65,6 +65,14 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 --userconfig=$HOME/.cnpmrc"
 
 # alias npm="cnpm"
+
+
+# android
+export ANDROID_HOME="/usr/local/Cellar/android-sdk/24.4.1_1"
+
+# go
+export GOPATH="$HOME/.go"
+export PATH="$GOPATH/bin:${PATH}"
 
 # Network
 #export ALL_PROXY="socks5://127.0.0.1:1080"

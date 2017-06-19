@@ -85,6 +85,7 @@ bind -r C-h previous-window # select previous window
 bind -r C-l next-window     # select next window
 bind Tab last-window        # move to last active window
 
+set -g mouse
 # toggle mouse
 bind m run "cut -c3- ~/.tmux.conf | sh -s _toggle_mouse"
 
@@ -600,9 +601,9 @@ run '~/.tmux/plugins/tpm/tpm'
 # _apply_bindings() {
 #   tmux_conf_new_window_retain_current_path=${tmux_conf_new_window_retain_current_path:-false}
 #   if _is_enabled "$tmux_conf_new_window_retain_current_path"; then
-#     tmux bind c new-window -c '#{pane_current_path}'
+#     tmux bind c new-window -c '#{pane_current_path}' -a
 #   else
-#     tmux bind c new-window
+#     tmux bind c new-window -a
 #   fi
 #
 #   tmux_conf_new_pane_retain_current_path=${tmux_conf_new_pane_retain_current_path:-true}

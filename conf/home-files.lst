@@ -3,14 +3,15 @@ bin/**
 .babelrc*
 .bashrc*
 .bashrc.local
-.config/nvim
 .clang_complete
 .esformatter*
 .eslintrc*
 .jupyter*
 .gemrc*
 .gitconfig
-.ipython/kernels
+.gitignore
+.pip
 .pylintrc
 .tern-project*
+.tmux.conf
 .zshrc*
