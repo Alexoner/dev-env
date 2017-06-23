@@ -1,4 +1,4 @@
-# sync-sys
+# dev-env
 Development environment setup in a bootstrapping approach.
 
 Setting up a development environment is boring and time consuming. It's better to eliminate the pain
@@ -18,3 +18,6 @@ sh <(curl https://raw.githubusercontent.com/Alexoner/synccf/master/bootstrap.sh 
 
 
 ## Restore
+
+## Thanks
+- [dev-setup](https://github.com/donnemartin/dev-setup)

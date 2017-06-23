@@ -13,6 +13,7 @@ function link_files() {
         #--exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
 	echo "creating symbol links of home files"
 	for f in \
+		.tmux \
 		.babelrc \
 		.bashrc \
 		.curlrc \
@@ -26,9 +27,7 @@ function link_files() {
 		.pylintrc \
 		.tern-project \
 		.tmux.conf \
-		.zshrc \
 		.pip \
-		.tmux \
 		bin
 	do
 		ln -sfv "$APP_PATH/$f" "$HOME/"
@@ -45,3 +44,5 @@ else
         link_files;
     fi;
 fi;
+
+lib/initialize.sh shell python vim
