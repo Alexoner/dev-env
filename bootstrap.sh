@@ -8,7 +8,7 @@ cd $APP_PATH || exit 1
 
 #### main entry
 
-function link_files() {
+link_files() {
     #rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
         #--exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
 	echo "creating symbol links of home files"
