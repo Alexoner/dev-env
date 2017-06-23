@@ -31,7 +31,7 @@ setup_shell () {
 	fi
 	EOF
 
-	#exit
+	. ~/.init.sh
 }
 
 setup_shell

@@ -1,7 +1,8 @@
 #!/bin/sh
 
 
-function init-env() {
+# init_dev() is more portable than function init_dev() {}
+init_env() {
     # Ask for the administrator password upfront
     #sudo -v
 
@@ -25,7 +26,7 @@ function init-env() {
             echo "Configuring Shell environment."
             echo "------------------------------"
             echo ""
-			./init-shell.sh
+			lib/init-shell.sh
 		fi
 		if [ $ARG == 'python' ] || [ $ARG == 'all' ]; then
             echo ""
@@ -33,7 +34,7 @@ function init-env() {
             echo "Installing Python environment."
             echo "------------------------------"
             echo ""
-			./init-python.sh
+			lib/init-python.sh
 		fi
 		if [ $ARG == 'python' ] || [ $ARG == 'all' ]; then
             echo ""
@@ -41,7 +42,7 @@ function init-env() {
             echo "Installing Python environment."
             echo "------------------------------"
             echo ""
-			./init-python.sh
+			lib/init-python.sh
 		fi
 		if [ $ARG == 'vim' ] || [ $ARG == 'all' ]; then
             echo ""
@@ -49,7 +50,7 @@ function init-env() {
             echo "Installing Python environment."
             echo "------------------------------"
             echo ""
-			./init-vim.sh
+			lib/init-vim.sh
 		fi
 		if [ $ARG == "osx" ] || [ $ARG == "all" ]; then
 			# Run the osxprep.sh Script
@@ -58,7 +59,7 @@ function init-env() {
 			echo "Updating OSX and installing Xcode command line tools"
 			echo "------------------------------"
 			echo ""
-			./init-osx.sh
+			lib/osx/init-osx.sh
 		fi
 		if [ $ARG == "brew" ] || [ $ARG == "all" ]; then
 			# Run the brew.sh Script
@@ -71,7 +72,7 @@ function init-env() {
 			echo "This might awhile to complete, as some formulae need to be installed from source."
 			echo "------------------------------"
 			echo ""
-			./init-brew.sh
+			lib/osx/init-brew.sh
 		fi
         #if [ $ARG == "osx" ] || [ $ARG == "all" ]; then
             ## Run the osx.sh Script
@@ -94,7 +95,7 @@ function init-env() {
             echo "Setting up Python data development environment."
             echo "------------------------------"
             echo ""
-            ./init-pydata.sh
+            lib/osx/init-pydata.sh
         fi
         if [ $ARG == "aws" ] || [ $ARG == "all" ]; then
             # Run the aws.sh Script
@@ -102,7 +103,7 @@ function init-env() {
             echo "Setting up AWS development environment."
             echo "------------------------------"
             echo ""
-            ./init-aws.sh
+            lib/osx/init-aws.sh
         fi
         if [ $ARG == "datastores" ] || [ $ARG == "all" ]; then
             # Run the datastores.sh Script
@@ -110,7 +111,7 @@ function init-env() {
             echo "Setting up data stores."
             echo "------------------------------"
             echo ""
-            ./init-datastores.sh
+            lib/osx/init-datastores.sh
         fi
         if [ $ARG == "web" ] || [ $ARG == "all" ]; then
             # Run the web.sh Script
@@ -118,7 +119,7 @@ function init-env() {
             echo "Setting up JavaScript web development environment."
             echo "------------------------------"
             echo ""
-            ./init-web.sh
+            lib/osx/init-web.sh
         fi
         if [ $ARG == "android" ] || [ $ARG == "all" ]; then
             # Run the android.sh Script
@@ -126,7 +127,7 @@ function init-env() {
             echo "Setting up Android development environment."
             echo "------------------------------"
             echo ""
-            ./init-android.sh
+            lib/osx/init-android.sh
         fi
     done
 
@@ -138,7 +139,7 @@ function init-env() {
 read -p "This script may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-init-env $@
+init_env $@
 fi;
 
-unset init-env;
+unset init_env;
