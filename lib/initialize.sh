@@ -36,14 +36,6 @@ init_env() {
             echo ""
 			lib/init-python.sh
 		fi
-		if [ $ARG == 'python' ] || [ $ARG == 'all' ]; then
-            echo ""
-            echo "------------------------------"
-            echo "Installing Python environment."
-            echo "------------------------------"
-            echo ""
-			lib/init-python.sh
-		fi
 		if [ $ARG == 'vim' ] || [ $ARG == 'all' ]; then
             echo ""
             echo "------------------------------"

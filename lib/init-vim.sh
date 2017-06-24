@@ -2,9 +2,9 @@
 
 
 setup_vim () {
-	#source ~/.python3/bin/activate
+	echo "===================== configuring vim =====================$(whoami)"
+	. "$HOME/.init.sh"
 	pip install neovim
-	echo "=====================installing spf13=====================$(whoami)"
 	curl https://raw.githubusercontent.com/Alexoner/spf13-vim/3.0/bootstrap.sh -L |sh -s
 	#exit
 	cat <<- \EOF >> ~/.init.sh
