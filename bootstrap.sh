@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 APP_PATH="$HOME/.dev-env"
 git clone https://github.com/Alexoner/dev-env.git "$APP_PATH"
@@ -45,4 +45,4 @@ else
     fi;
 fi;
 
-lib/initialize.sh shell python vim
+bash lib/initialize.sh shell python vim

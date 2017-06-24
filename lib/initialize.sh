@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 # init_dev() is more portable than function init_dev() {}
