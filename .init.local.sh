@@ -1,3 +1,7 @@
+if [ -f $HOME/.init.local.sh ]
+then
+	. $HOME/.init.local.sh
+fi
 ############################## General ################################
 
 # bin path in home directory

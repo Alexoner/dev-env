@@ -32,12 +32,13 @@ setup_python() {
 
 	echo installing actual Python version
 	PYTHON_VERSION=3.6.0
-	pyenv install $PYTHON_VERSION
+	# build CPython with shared library
+	env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install $PYTHON_VERSION
 	pyenv global $PYTHON_VERSION
-	pyenv virtualenv $PYTHON_VERSION alg
-	pyenv activate alg
+	#pyenv virtualenv $PYTHON_VERSION alg
+	#pyenv activate alg
 
-	#pyenv install 2.7.10
+	#env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 2.7.10
 }
 
 setup_python_mirror
