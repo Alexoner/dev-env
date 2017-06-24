@@ -15,7 +15,7 @@ setup_python_mirror () {
 
 setup_python() {
 	echo "=====================setting up python=====================$USER"
-
+	echo "Installing Python environment manager"
 	# install Python version manager as a regular user
 	curl -L https://raw.github.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
 	# use \EOF to avoid evaluating variables
@@ -28,8 +28,9 @@ setup_python() {
 	EOF
 	
 	echo "sourcing $HOME/.init.sh"
-	. ~/.init.sh
+	. "$HOME/.init.sh"
 
+	echo installing actual Python version
 	PYTHON_VERSION=3.6.0
 	pyenv install $PYTHON_VERSION
 	pyenv global $PYTHON_VERSION

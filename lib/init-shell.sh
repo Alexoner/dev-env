@@ -13,21 +13,27 @@ setup_shell () {
 
 	# source a separate init script
 	touch $HOME/.init.sh
-	cat <<-EOF >> ~/.zshrc
+	cat <<-\EOF >> $HOME/.init.sh
+	if [ -f $HOME/.init.local.sh ]
+	then
+		. $HOME/.init.local.sh
+	fi
+	EOF
+	cat <<-\EOF >> ~/.zshrc
 
 	############################# custom initialization script #########################
-	if [ -f \$HOME/.init.sh ]
+	if [ -f $HOME/.init.sh ]
 	then
-		. \$HOME/.init.sh
+		. $HOME/.init.sh
 	fi
 	EOF
 
-	cat <<-EOF >> ~/.bashrc
+	cat <<-\EOF >> ~/.bashrc
 
 	############################# custom initialization script #########################
-	if [ -f \$HOME/.init.sh ]
+	if [ -f $HOME/.init.sh ]
 	then
-		. \$HOME/.init.sh
+		. $HOME/.init.sh
 	fi
 	EOF
 

@@ -132,7 +132,7 @@ init_env() {
     done
 
     echo "------------------------------"
-    echo "Completed running .dots, restart your computer to ensure all updates take effect"
+    echo "Completed running!"
     echo "------------------------------"
 }
 
