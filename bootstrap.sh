@@ -45,4 +45,4 @@ else
     fi;
 fi;
 
-bash lib/initialize.sh shell python vim
+bash lib/initialize.sh --force shell python vim

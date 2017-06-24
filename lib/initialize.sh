@@ -136,10 +136,15 @@ init_env() {
     echo "------------------------------"
 }
 
-read -p "This script may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-echo "";
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-init_env $@
-fi;
+
+if [ "$1" == "--force" -o "$1" == "-f" ]; then 
+    init_env $@
+else
+    read -p "This script may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
+    echo "";
+    if [[ $REPLY =~ ^[Yy]$ ]]; then 
+        init_env $@
+    fi;
+fi
 
 unset init_env;
