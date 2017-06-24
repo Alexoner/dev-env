@@ -3,6 +3,8 @@
 APP_PATH="$HOME/.dev-env"
 git clone https://github.com/Alexoner/dev-env.git "$APP_PATH"
 
+DEFAULT_MODULES='shell python vim'
+
 cd $APP_PATH || exit 1
 
 
@@ -45,4 +47,5 @@ else
     fi;
 fi;
 
-bash lib/initialize.sh --force shell python vim
+# use ${x:-y} syntax for logic OR operation
+bash lib/initialize.sh --force ${@:-${DEFAULT_MODULES}}
