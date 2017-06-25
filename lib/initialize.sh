@@ -44,6 +44,14 @@ init_env() {
             echo ""
 			lib/init-vim.sh
 		fi
+		if [ $ARG == 'ml' ] || [ $ARG == 'all' ]; then
+            echo ""
+            echo "------------------------------"
+            echo "Installing machine learning environment."
+            echo "------------------------------"
+            echo ""
+			lib/init-ml.sh
+		fi
 		if [ $ARG == "osx" ] || [ $ARG == "all" ]; then
 			# Run the osxprep.sh Script
 			echo ""

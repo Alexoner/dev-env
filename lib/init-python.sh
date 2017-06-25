@@ -35,10 +35,11 @@ setup_python() {
 	# build CPython with shared library
 	env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install $PYTHON_VERSION
 	pyenv global $PYTHON_VERSION
+	#env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 2.7.10
 	#pyenv virtualenv $PYTHON_VERSION alg
 	#pyenv activate alg
 
-	#env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 2.7.10
+	pip install ipython jupyter pep8 flake8
 }
 
 setup_python_mirror
