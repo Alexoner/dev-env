@@ -14,11 +14,19 @@ setup_shell () {
 	# source a separate init script
 	touch $HOME/.init.sh
 	cat <<-\EOF >> $HOME/.init.sh
+	# source customized initailization script
 	if [ -f $HOME/.init.local.sh ]
 	then
 		. $HOME/.init.local.sh
 	fi
+
+	# locale
+	export LANG=en_US.UTF-8
+
+	################################### Tmux ############################################
+	export tmux_conf_new_window_retain_current_path=true
 	EOF
+
 	cat <<-\EOF >> ~/.zshrc
 
 	############################# custom initialization script #########################

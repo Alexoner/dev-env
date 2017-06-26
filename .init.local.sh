@@ -1,25 +1,9 @@
-if [ -f $HOME/.init.local.sh ]
-then
-	. $HOME/.init.local.sh
-fi
 ############################## General ################################
 
 # bin path in home directory
 export PATH="$PATH:$HOME/bin"
 
-# locale
-export LANG=en_US.UTF-8
-
-################################### Tmux ###################################################
-export tmux_conf_new_window_retain_current_path=true
-
 alias ls="ls -G"
-################################### vim ###################################################
-export EDITOR=nvim
-alias vi="vim"
-alias vim="nvim"
-alias vimdiff="nvim -d"
-#alias python2="python"
 
 # tex
 export PATH="$PATH:/Library/TeX/texbin"
@@ -50,6 +34,3 @@ export PATH="$GOPATH/bin:${PATH}"
 
 # Network
 #export ALL_PROXY="socks5://127.0.0.1:1080"
-
-# python
-#source ~/.python3/bin/activate

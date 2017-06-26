@@ -25,7 +25,6 @@ link_files() {
 		.gitconfig \
 		.gitignore \
 		.gitmodules \
-		.init.sh \
 		.pylintrc \
 		.tern-project \
 		.tmux.conf \
@@ -36,6 +35,10 @@ link_files() {
 	done
 
 }
+
+# shell initialization skeleton should be automatically generated after
+# successfully installing of corresponding software. So , no need to link
+# that file
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
     link_files;
