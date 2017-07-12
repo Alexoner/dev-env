@@ -8,8 +8,11 @@
 # -- general -------------------------------------------------------------------
 
 set -g default-terminal "screen-256color" # colors!
-# so that vim solarized colorscheme will work in tmux
+# so that vim solarized colorscheme will work in tmux. Note: you need to change
+# the value 'xterm-256color' to the environment variable $TERM outside your tmux
+# session, because this value is dependent on machines
 set-option -ga terminal-overrides ",xterm-256color:Tc"
+set-option -ga terminal-overrides ",xterm:Tc"
 setw -g xterm-keys on
 set -s escape-time 10                     # faster command sequences
 set -sg repeat-time 600                   # increase repeat timeout

@@ -1,6 +1,8 @@
 #!/bin/sh
 
+echo internal IP
 ifconfig |grep inet |awk '$1=="inet" {print $2}'
 
-curl ipecho.net/plain; echo
-curl ip.cn; echo
+echo "\r\nremote IP"
+curl ipecho.net/plain; echo 
+#curl ip.cn; echo
