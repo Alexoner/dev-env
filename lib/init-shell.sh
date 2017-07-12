@@ -23,6 +23,8 @@ setup_shell () {
 	# locale
 	export LANG=en_US.UTF-8
 
+	export PATH=$PATH:$HOME/bin
+
 	################################### Tmux ############################################
 	export tmux_conf_new_window_retain_current_path=true
 	EOF
