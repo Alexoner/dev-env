@@ -17,14 +17,27 @@ setup_python() {
 	echo "=====================setting up python=====================$USER"
 	echo "Installing Python environment manager"
 	# install Python version manager as a regular user
-	curl -L https://raw.github.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+	#curl -L https://raw.github.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+	git clone git://github.com/pyenv/pyenv.git ~/.pyenv
+	git clone git://github.com/pyenv/pyenv-update.git ~/.pyenv/plugins/pyenv-update
+	#git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+	git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+
 	# use \EOF to avoid evaluating variables
 	cat <<- \EOF >> ~/.init.sh
 
 	########################## pyenv configuration #########################
-	export PATH="$HOME/.pyenv/bin:$PATH"
-	eval "$(pyenv init -)"
-	eval "$(pyenv virtualenv-init -)"
+	export PYENV_ROOT="$HOME/.pyenv"
+	export PATH="$PYENV_ROOT/bin:$PATH"
+	if command -v pyenv 1>/dev/null 2>&1 
+	then
+		eval "$(pyenv init -)"
+		eval "$(pyenv virtualenv-init -)"
+	fi
+
+	#export PATH="$HOME/.pyenv/bin:$PATH"
+	#eval "$(pyenv init -)"
+	#eval "$(pyenv virtualenv-init -)"
 	EOF
 	
 	echo "sourcing $HOME/.init.sh"
