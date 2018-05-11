@@ -29,6 +29,7 @@ link_files() {
 		.tern-project \
 		.tmux.conf \
 		.pip \
+		.clang-format \
 		bin
 	do
 		ln -sfv "$APP_PATH/$f" "$HOME/"
