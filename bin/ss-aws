@@ -7,4 +7,4 @@ then
 else
     ip="52.193.41.186"
 fi
-sslocal -s $ip -p 9206 -m aes-256-cfb -k alexishere -l 1080
+sslocal -s $ip -p 9206 -m aes-256-cfb -k alexishere -l 1086

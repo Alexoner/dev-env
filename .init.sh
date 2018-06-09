@@ -1,12 +1,16 @@
-if [ -f $HOME/.init.local.sh  ]
+# source customized initailization script
+if [ -f $HOME/.init.local.sh ]
 then
 	. $HOME/.init.local.sh
 fi
 
 # locale
+export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-####################################### Tmux #############################################
+export PATH=$PATH:$HOME/bin
+
+################################### Tmux ############################################
 export tmux_conf_new_window_retain_current_path=true
 
 ######################################## pyenv configuration #############################
