@@ -6,7 +6,7 @@ install_ml () {
 	. "$HOME/.init.sh"
 	pip install \
 		sklearn \
-		padas \
+		pandas \
 		matplotlib \
 		tensorflow \
 		keras
