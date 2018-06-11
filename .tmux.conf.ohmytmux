@@ -168,6 +168,7 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-resurrect' # save and restore tmux session
 set -g @plugin 'tmux-plugins/tmux-continuum' # continuously save and restore with help of tmux-resurrect
 set -g @plugin 'tmux-plugins/tmux-prefix-highlight' # prefix highlight
+set -g @plugin 'tmux-plugins/tmux-yank'
 
 set -g @continuum-restore 'on'
 
