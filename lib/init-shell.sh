@@ -3,6 +3,7 @@
 #
 setup_shell () {
 	echo "=====================setting up zsh=====================$(whoami)"
+	echo "REMEMBER: EXIT ZSH AFTER INSTALLING oh-my-zsh to proceed..."
 	# install oh-my-zsh
 	export ZSH=""
 	cd "$HOME"

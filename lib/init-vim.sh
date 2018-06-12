@@ -4,6 +4,7 @@
 setup_vim () {
 	echo "===================== configuring vim =====================$(whoami)"
 	. "$HOME/.init.sh"
+	brew install neovim
 	pip install neovim
 	curl https://raw.githubusercontent.com/Alexoner/spf13-vim/3.0/bootstrap.sh -L |sh -s
 	#exit

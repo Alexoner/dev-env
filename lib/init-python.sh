@@ -52,7 +52,12 @@ setup_python() {
 	#pyenv virtualenv $PYTHON_VERSION alg
 	#pyenv activate alg
 
-	pip install ipython jupyter pep8 flake8
+	pip install ipython \
+		jupyter \
+		pep8 \
+		flake8 \
+		bash_kernel
+	python -m bash_kernel.install
 }
 
 setup_python_mirror

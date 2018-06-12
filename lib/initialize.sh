@@ -59,7 +59,7 @@ init_env() {
 			echo "Updating OSX and installing Xcode command line tools"
 			echo "------------------------------"
 			echo ""
-			lib/osx/init-osx.sh
+			lib/init-osx.sh
 		fi
 		if [ $ARG == "brew" ] || [ $ARG == "all" ]; then
 			# Run the brew.sh Script
@@ -72,7 +72,7 @@ init_env() {
 			echo "This might awhile to complete, as some formulae need to be installed from source."
 			echo "------------------------------"
 			echo ""
-			lib/osx/init-brew.sh
+			lib/init-brew.sh
 		fi
         #if [ $ARG == "osx" ] || [ $ARG == "all" ]; then
             ## Run the osx.sh Script
@@ -95,7 +95,7 @@ init_env() {
             echo "Setting up Python data development environment."
             echo "------------------------------"
             echo ""
-            lib/osx/init-pydata.sh
+            lib/init-pydata.sh
         fi
         if [ $ARG == "aws" ] || [ $ARG == "all" ]; then
             # Run the aws.sh Script
@@ -103,7 +103,7 @@ init_env() {
             echo "Setting up AWS development environment."
             echo "------------------------------"
             echo ""
-            lib/osx/init-aws.sh
+            lib/init-aws.sh
         fi
         if [ $ARG == "datastores" ] || [ $ARG == "all" ]; then
             # Run the datastores.sh Script
@@ -111,7 +111,7 @@ init_env() {
             echo "Setting up data stores."
             echo "------------------------------"
             echo ""
-            lib/osx/init-datastores.sh
+            lib/init-datastores.sh
         fi
         if [ $ARG == "web" ] || [ $ARG == "all" ]; then
             # Run the web.sh Script
@@ -119,7 +119,7 @@ init_env() {
             echo "Setting up JavaScript web development environment."
             echo "------------------------------"
             echo ""
-            lib/osx/init-web.sh
+            lib/init-web.sh
         fi
         if [ $ARG == "android" ] || [ $ARG == "all" ]; then
             # Run the android.sh Script
@@ -127,7 +127,7 @@ init_env() {
             echo "Setting up Android development environment."
             echo "------------------------------"
             echo ""
-            lib/osx/init-android.sh
+            lib/init-android.sh
         fi
     done
 
