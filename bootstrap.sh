@@ -30,6 +30,7 @@ link_files() {
 		.tmux.conf \
 		.pip \
 		.clang-format \
+		.config \
 		bin
 	do
 		ln -sfv "$APP_PATH/$f" "$HOME/"
