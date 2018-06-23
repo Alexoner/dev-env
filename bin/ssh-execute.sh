@@ -8,3 +8,9 @@ ssh -t $user@$host 'bash -s' < local_script.sh
 
 # sudo over ssh command
 #ssh -t $user@$host "sudo ls"
+
+## ssh heredoc
+ssh -t $user@$host bash <<EOF
+	ls
+	whoami
+EOF

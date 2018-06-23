@@ -1,0 +1,44 @@
+#!/bin/bash
+
+#scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-tf-gpu --interactive &
+
+#$PID=`ps aux|grep $USER |grep scons |grep -v grep |awk '{print $2}'`
+
+FILE=$1
+PID=$2
+
+
+program_exists() {
+    local ret='0'
+    command -v "$1" >/dev/null 2>&1 || { local ret='1'; }
+
+    # fail on non-zero return value
+    if [ "$ret" -ne 0 ]; then
+        return 1
+    fi
+
+    return 0
+}
+
+if ! program_exists inotifywait
+then
+	echo "inotifywait needs to be installed first"
+	mkdir -p /tmp && cd /tmp
+	curl -LO "http://github.com/downloads/rvoicilas/inotify-tools/inotify-tools-3.14.tar.gz"
+	tar xfv inotify-tools-3.14.tar.gz
+	cd inotify-tools-3.14
+	./configure --prefix=$USER/
+	make install
+	INOTIFYWAIT=$USER/bin/inotifywait
+else 
+	INOTIFYWAIT=inotifywait
+fi
+
+
+while inotifywait -e modify "$FILE"
+do
+	echo "build $1" >> /proc/$PID/fd/0
+	#ssh -t ficusromania 'bash -s' <<EOF
+		#echo "build $1" >> /proc/$PID/fd/0
+#EOF
+done
