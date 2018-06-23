@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-tf-gpu --interactive &
+#script -q -c 'scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-tf-gpu --interactive' &
 
 #$PID=`ps aux|grep $USER |grep scons |grep -v grep |awk '{print $2}'`
 
@@ -27,18 +27,53 @@ then
 	curl -LO "http://github.com/downloads/rvoicilas/inotify-tools/inotify-tools-3.14.tar.gz"
 	tar xfv inotify-tools-3.14.tar.gz
 	cd inotify-tools-3.14
-	./configure --prefix=$USER/
+	./configure --prefix=$HOME/
 	make install
 	INOTIFYWAIT=$USER/bin/inotifywait
 else 
 	INOTIFYWAIT=inotifywait
 fi
 
+DATE=`date +%Y%m%d`
+NAME=/tmp/$DATE.pipe
+# XXX: make first in first out pipe file
+mkfifo $NAME
 
-while inotifywait -e modify "$FILE"
+cat-pipe() {
+	while true
+	do
+		cat "$1"
+	done
+}
+
+cat-pipe $NAME| scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-tf-gpu --interactive &
+
+
+# use inotifywait -m to loop
+#$INOTIFYWAIT -mre modify,create,delete,move "$FILE" | while read path event file
+$INOTIFYWAIT -mre modify "$FILE" | while read path event file
 do
-	echo "build $1" >> /proc/$PID/fd/0
-	#ssh -t ficusromania 'bash -s' <<EOF
-		#echo "build $1" >> /proc/$PID/fd/0
+	if [[ "$file" =~ .*\.(h|c|cpp|cu) ]]
+	then
+		echo "event: " $path $event $file
+		#echo "?" >> $NAME
+		echo "build $1" >> $NAME
+		#echo <<EOF  >> /proc/$PID/fd/0
+			#build $1
 #EOF
+	fi
 done
+
+# use while to loop
+#while $INOTIFYWAIT -re modify "$FILE"
+#do
+	#if [[ "$EVENT" =~ ".*\.(h|c|cpp|cu)" ]]
+	#then
+		#echo "event: $EVENT" |tee -a /dev/null
+		#echo "build $1\n" |tee -a /proc/$PID/fd/0
+		##echo "build $1\n" >> /proc/$PID/fd/0
+		##ssh -t ficusromania 'bash -s' <<EOF
+		##echo "build $1" >> /proc/$PID/fd/0
+##EOF
+	#fi
+#done
