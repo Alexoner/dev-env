@@ -1,7 +1,7 @@
 #!/bin/bash
 
 APP_PATH="$HOME/.dev-env"
-git clone https://github.com/Alexoner/dev-env.git "$APP_PATH"
+git clone --recurse-submodules -j8 https://github.com/Alexoner/dev-env.git "$APP_PATH"
 
 DEFAULT_MODULES='shell brew tmux python vim'
 

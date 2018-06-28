@@ -46,6 +46,7 @@ cat-pipe() {
 	done
 }
 
+# TODO: will tailf pipe file do?
 cat-pipe $NAME| scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-tf-gpu --interactive &
 
 
@@ -73,6 +74,8 @@ do
 	fi
 done
 
+# FIXME: writing to stdin file /proce/$PID/fd/0 doesn't work, why?
+# how about writing tty file?
 # use while to loop
 #while $INOTIFYWAIT -re modify "$FILE"
 #do
