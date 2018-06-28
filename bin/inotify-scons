@@ -3,6 +3,7 @@
 #script -q -c 'scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-tf-gpu --interactive' &
 
 #$PID=`ps aux|grep $USER |grep scons |grep -v grep |awk '{print $2}'`
+# usage: inotify-scons watch_directory [build target]
 
 FILE=$1
 PID=$2
@@ -49,6 +50,7 @@ cat-pipe() {
 # TODO: will tailf pipe file do?
 cat-pipe $NAME| scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-tf-gpu --interactive &
 
+BUILD_TARGET=${2:-$1}
 
 TIMESTAMP_LAST=0
 # use inotifywait -m to loop
@@ -64,7 +66,7 @@ do
 		echo "time elapsed since last time build: $INTERVAL"
 		if [ $INTERVAL -gt 15 ]
 		then
-			echo "build $1" >> $NAME
+			echo "build $BUILD_TARGET" >> $NAME
 			TIMESTAMP_LAST=$TIMESTAMP
 		fi
 
