@@ -52,6 +52,8 @@ setup_python() {
 	#pyenv virtualenv $PYTHON_VERSION alg
 	#pyenv activate alg
 
+	brew uninstall --ignore-dependencies python2
+
 	pip install ipython \
 		jupyter \
 		pep8 \
