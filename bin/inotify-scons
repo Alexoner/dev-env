@@ -35,20 +35,20 @@ else
 	INOTIFYWAIT=inotifywait
 fi
 
-DATE=`date +%Y%m%d`
+DATE=`date +'%Y-%m-%d_%H:%M:%s'`
 NAME=/tmp/$DATE.pipe
-# XXX: make first in first out pipe file
+# XXX: make First In First Out pipe file
 mkfifo $NAME
 
-cat-pipe() {
+loop-cat() {
 	while true
 	do
 		cat "$1"
 	done
 }
 
-# TODO: will tailf pipe file do?
-cat-pipe $NAME| scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-tf-gpu --interactive &
+# will tailf pipe file do? NO...
+loop-cat $NAME | scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-tf-gpu --interactive &
 
 BUILD_TARGET=${2:-$1}
 
