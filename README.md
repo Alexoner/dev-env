@@ -6,7 +6,7 @@ by automating it with scripts.
 
 # installation
 ```shell
-bash <(curl https://raw.githubusercontent.com/Alexoner/synccf/master/bootstrap.sh -L)
+bash <(curl https://raw.githubusercontent.com/Alexoner/dev-env/master/bootstrap.sh -L)
 ```
 
 ## Backup

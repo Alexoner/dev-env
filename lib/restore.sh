@@ -1,7 +1,7 @@
 #!/bin/sh
 
 BASEDIR=$(dirname "$0")
-APP_PATH="$HOME/.synccf"
+APP_PATH="$HOME/.dev-env"
 
 program_exists() {
     local ret='0'
@@ -41,8 +41,8 @@ then
     brew install neovim/neovim/neovim
 fi
 
-# download synccf repository
-cd "$HOME/.synccf" || exit 0
+# download dev-env repository
+cd "$HOME/.dev-env" || exit 0
 
 #install neovim
 brew tap neovim
@@ -70,7 +70,7 @@ if [ ! -e "$HOME/Documents/soft/shadowsocks-heroku" ]; then
     echo '#!/bin/sh' > run.sh
     echo 'node "$(dirname $0)/local.js" -s xxx-island.herokuapp.com -l 1081 -m rc4 -k xxx11yy -r 80 1>> ss.log  2> ss.log' >> run.sh
     chmod +x run.sh
-    cd "$HOME/.synccf" || exit 0
+    cd "$HOME/.dev-env" || exit 0
 fi
 
 #install brew packages
