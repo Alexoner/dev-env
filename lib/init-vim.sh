@@ -6,7 +6,7 @@ setup_vim () {
 	. "$HOME/.init.sh"
 	brew install neovim
 	pip install neovim
-	curl https://raw.githubusercontent.com/Alexoner/spf13-vim/3.0/bootstrap.sh -L |sh -s
+	curl https://raw.githubusercontent.com/Alexoner/vimde/master/bootstrap.sh -L |sh -s
 	#exit
 	cat <<- \EOF >> ~/.init.sh
 

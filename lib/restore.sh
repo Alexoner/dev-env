@@ -52,14 +52,14 @@ then
 fi
 
 SOFT_DIR="$HOME/Documents/soft"
-if [ ! -e "$HOME/.spf13-vim-3" ]; then
+if [ ! -e "$HOME/.vimde" ]; then
     #install my vim conf
-    curl https://raw.githubusercontent.com/Alexoner/spf13-vim/3.0/bootstrap.sh -L > spf13-vim.sh && sh spf13-vim.sh
+    curl https://raw.githubusercontent.com/Alexoner/vimde/master/bootstrap.sh -L > vimde.sh && sh vimde.sh
     # install powerline fonts for vim
     git clone https://github.com/powerline/fonts.git "$SOFT_DIR/fonts" && sh "$SOFT_DIR/fonts/install.sh"
-    cd "$HOME/.synccf" || exit 0
-elif [ ! -d "$HOME/.spf13-vim-3" ]; then
-    echo "$HOME/.spf13-vim-3 exists but not a directory"
+    cd "$HOME/.dev-env" || exit 0
+elif [ ! -d "$HOME/.vimde" ]; then
+    echo "$HOME/.vimde exists but not a directory"
 fi
 
 #install shadowsocks-heroku
