@@ -50,7 +50,8 @@ loop-cat() {
 # will tailf pipe file do? NO...
 loop-cat $NAME | scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-tf-gpu --interactive &
 
-BUILD_TARGET=${2:-$1}
+BUILD_TARGET=${@:2}
+BUILD_TARGET=${BUILD_TARGET:-$1}
 
 TIMESTAMP_LAST=0
 # use inotifywait -m to loop
