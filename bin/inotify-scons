@@ -67,8 +67,8 @@ do
 		echo "time elapsed since last time build: $INTERVAL"
 		if [ $INTERVAL -gt 15 ]
 		then
-			echo "\e[1m\e[33m build $BUILD_TARGET\e[0m"
-			echo "build $BUILD_TARGET" |tee -a $NAME
+			echo -e "\e[1m\e[33mbuild\e[0m $BUILD_TARGET"
+			echo "build $BUILD_TARGET" >> $NAME
 			 
 			TIMESTAMP_LAST=$TIMESTAMP
 		fi
