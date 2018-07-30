@@ -48,7 +48,7 @@ loop-cat() {
 }
 
 # will tailf pipe file do? NO...
-loop-cat $NAME | scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-tf-gpu --interactive &
+loop-cat $NAME | scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-cudnn-version=cudnn6 --with-tf-gpu --interactive &
 
 BUILD_TARGET=${@:2}
 BUILD_TARGET=${BUILD_TARGET:-$1}
@@ -58,7 +58,7 @@ TIMESTAMP_LAST=0
 #$INOTIFYWAIT -mre modify,create,delete,move "$FILE" | while read path event file
 $INOTIFYWAIT -mre modify "$FILE" | while read path event file
 do
-	if [[ "$file" =~ .*\.(h|c|cpp|cu) ]]
+	if [[ "$file" =~ .*\.(h|c|cpp|cu)$ ]]
 	then
 		echo "event: " $path $event $file
 		#echo "?" >> $NAME
