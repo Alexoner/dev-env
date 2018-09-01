@@ -13,6 +13,6 @@ done
 
 if [ "$1" != "" ]
 then
-    rsync -av "$1" "$CATALINA_HOME/deploy/"
+    rsync -avP "$1" "$CATALINA_HOME/deploy/"
 fi
 
