@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# tutorial of string manipulations in bash
+string="hello-world"
+prefix="hell"
+suffix="ld"
+prefix_len=${#prefix} # prefix length
+echo "${string:$prefix_len}"
+echo ${string#"$prefix"} # remove prefix, prints "-world"
+echo ${foo%"$suffix"} # remove suiffix, prints "o-wor"
+
+
+# real hammer time
+# pass paths with trailing slash
+src=${1:-/mnt/WXEG0011/hdu/ficus/}
+dest=${2:-/mnt/WXEG0011/hdu/ficus_cpu/}
+
+prefix=${src} # prefix
+prefix_len=${#src} # length
+echo "source directory prefix: $prefix, length: $prefix_len"
+
+echo "linking $src -> $dest"
+
+find $src -type f \
+    -regextype posix-extended \
+    -regex '.*\.(h|hpp|cpp|cxx)|Sconstruct|Sconscript' \
+    | while read f
+    do
+        BASEDIR=$(dirname $f)
+        #RELDIR=${BASEDIR:24} # relative directory to top level directory
+        RELDIR=${BASEDIR#"$prefix"} # remove directory prefix
+        #echo "base dir: $BASEDIR ${RELDIR}"
+        TARGETDIR=$dest$RELDIR
+        mkdir -pv $TARGETDIR
+        ln -sfv $f $dest${f:$prefix_len};
+    done
