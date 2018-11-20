@@ -26,8 +26,20 @@ setup_shell () {
 
     export PATH=$PATH:$HOME/bin
 
+    ################################# SHELL PROMPT configuration ########################
+    if [ $SHELL = "/bin/zsh" ]
+    then
+        if [[ $PROMPT =~ '^.+date.+$' ]] # regular expression comparison
+        then
+            #echo "prompt is already set"
+        else
+            export PROMPT="[\$(date +%H:%M:%S)] %{$fg[white]%}%n@%{$fg[green]%}%m%{$reset_color%} ${PROMPT}"
+        fi
+    fi
+
     ################################### Tmux ############################################
     export tmux_conf_new_window_retain_current_path=true
+
 
     ################################### alias ############################################
     alias sl=ls
