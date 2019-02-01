@@ -36,9 +36,9 @@ else
 fi
 
 DATE=`date +'%Y-%m-%d_%H:%M:%s'`
-NAME=/tmp/$DATE.pipe
+NAMED_PIPE=/tmp/$DATE.pipe
 # XXX: make First In First Out pipe file
-mkfifo $NAME
+mkfifo $NAMED_PIPE
 
 loop-cat() {
 	while true
@@ -48,7 +48,7 @@ loop-cat() {
 }
 
 # will tailf pipe file do? NO...
-loop-cat $NAME | scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-cudnn-version=cudnn6 --with-tf-gpu --interactive &
+loop-cat $NAMED_PIPE | scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-cudnn-version=cudnn6 --with-tf-gpu --interactive &
 
 BUILD_TARGET=${@:2}
 BUILD_TARGET=${BUILD_TARGET:-$1}
@@ -61,14 +61,14 @@ do
 	if [[ "$file" =~ .*\.(h|c|cpp|cu)$ ]]
 	then
 		echo "event: " $path $event $file
-		#echo "?" >> $NAME
+		#echo "?" >> $NAMED_PIPE
 		TIMESTAMP=`date +%s`
 		INTERVAL=$(($TIMESTAMP - $TIMESTAMP_LAST))
 		echo "time elapsed since last time build: $INTERVAL"
-		if [ $INTERVAL -gt 15 ]
+		if [ $INTERVAL -gt 10 ]
 		then
 			echo -e "\e[1m\e[33mbuild\e[0m $BUILD_TARGET"
-			echo "build $BUILD_TARGET" >> $NAME
+			echo "build $BUILD_TARGET" >> $NAMED_PIPE
 			 
 			TIMESTAMP_LAST=$TIMESTAMP
 		fi

@@ -614,7 +614,8 @@ run '~/.tmux/plugins/tpm/tpm'
 # }
 #
 # _apply_bindings() {
-#   tmux_conf_new_window_retain_current_path=${tmux_conf_new_window_retain_current_path:-false}
+#   tmux_conf_new_window_retain_current_path=${tmux_conf_new_window_retain_current_path:-true}
+#   #echo "tmux_conf_new_window_retain_current_path: $tmux_conf_new_window_retain_current_path"
 #   if _is_enabled "$tmux_conf_new_window_retain_current_path"; then
 #     tmux bind c new-window -c '#{pane_current_path}' -a
 #   else
