@@ -1,11 +1,17 @@
 #!/bin/bash
 
+################################################################################
+# This script watches a directory for file 'modify event', and automatically
+# compile targets with scons command.
+# This is made possible by two tools: INOTIFY(watch) and NAMED PIPE
+################################################################################
+
 #script -q -c 'scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-tf-gpu --interactive' &
 
 #$PID=`ps aux|grep $USER |grep scons |grep -v grep |awk '{print $2}'`
 # usage: inotify-scons watch_directory [build target]
 
-FILE=$1
+DIRECTORY=$1
 PID=$2
 
 
@@ -21,6 +27,7 @@ program_exists() {
     return 0
 }
 
+# download and install inotifywait tool
 if ! program_exists inotifywait
 then
 	echo "inotifywait needs to be installed first"
@@ -37,9 +44,14 @@ fi
 
 DATE=`date +'%Y-%m-%d_%H:%M:%s'`
 NAMED_PIPE=/tmp/$DATE.pipe
-# XXX: make First In First Out pipe file
+# XXX: make First In First Out named pipe file, so that we can send text to stdin
+# of a running process
+# One of the key differences between regular pipes and named pipes is that 
+# named pipes have a presence in the file system.
+# https://serverfault.com/questions/407902/write-to-the-stdin-of-a-running-process-with-the-same-effect-behaviour-of-direct
 mkfifo $NAMED_PIPE
 
+# indefinitely read from the named pipe file, never send EOF to stdout
 loop-cat() {
 	while true
 	do
@@ -47,16 +59,25 @@ loop-cat() {
 	done
 }
 
-# will tailf pipe file do? NO...
-loop-cat $NAMED_PIPE | scons -uj`nproc` --with-caffe-gpu caffe_train=1 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-gpu-cuda-version=cuda8 --with-cudnn-version=cudnn6 --with-tf-gpu --interactive &
+# will tailf pipe file do? NO... why?
+cmd_atom="scons --with-caffe-gpu use_caffe_gpu=1 -uj`nproc` --with-gpu-cuda-version=cuda9 --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-cudnn-version=cudnn7 --with-trt-version=5.0"
+#cmd_face_platform="scons -uj`nproc` release=0 license=0 use_caffe_gpu=1 --with-caffe-gpu --with-gpu-cuda-version=cuda9 --with-use-opencv-gpu-mat --with-opencv-version=3.2 --with-use-easy-rtsp --with-tf-gpu --with-cudnn-version=cudnn7 --with-trt-version=5.0"
+cmd_face_platform="scons --with-caffe-gpu use_caffe_gpu=1 -uj`nproc` --with-gpu-cuda-version=cuda8   --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-cudnn-version=cudnn7 --with-trt-version=4.0"
+cmd_cpu="scons -uj`nproc` --with-blas=mkl --with-mkldnn --with-no-reuse-blob"
+#cmd_cpu="scons -uj`nproc` --with-stacktrace=perfect"
+cmd="$cmd_atom --interactive"
+#cmd="$cmd_face_platform --interactive"
+#cmd="$cmd_cpu --interactive"
+loop-cat $NAMED_PIPE | $cmd & # READ the text in FIFO file, and WRITE it to stdin of 'cmd'
 
-BUILD_TARGET=${@:2}
+BUILD_TARGET=${@:2} # ${@:1:2}: get slice of positional parameters, start index 1, length is 2
 BUILD_TARGET=${BUILD_TARGET:-$1}
 
 TIMESTAMP_LAST=0
+## watch file change and notify and trigger action
 # use inotifywait -m to loop
-#$INOTIFYWAIT -mre modify,create,delete,move "$FILE" | while read path event file
-$INOTIFYWAIT -mre modify "$FILE" | while read path event file
+#$INOTIFYWAIT -mre modify,create,delete,move "$DIRECTORY" | while read path event file
+$INOTIFYWAIT -mre modify "$DIRECTORY" | while read path event file
 do
 	if [[ "$file" =~ .*\.(h|c|cpp|cu)$ ]]
 	then
@@ -68,7 +89,7 @@ do
 		if [ $INTERVAL -gt 10 ]
 		then
 			echo -e "\e[1m\e[33mbuild\e[0m $BUILD_TARGET"
-			echo "build $BUILD_TARGET" >> $NAMED_PIPE
+			echo "build $BUILD_TARGET" >> $NAMED_PIPE # WRITE build command to FIFO file
 			 
 			TIMESTAMP_LAST=$TIMESTAMP
 		fi
@@ -82,7 +103,7 @@ done
 # FIXME: writing to stdin file /proce/$PID/fd/0 doesn't work, why?
 # how about writing tty file?
 # use while to loop
-#while $INOTIFYWAIT -re modify "$FILE"
+#while $INOTIFYWAIT -re modify "$DIRECTORY"
 #do
 	#if [[ "$EVENT" =~ ".*\.(h|c|cpp|cu)" ]]
 	#then
