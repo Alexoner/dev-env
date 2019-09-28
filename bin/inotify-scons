@@ -65,9 +65,10 @@ cmd_atom="scons --with-caffe-gpu use_caffe_gpu=1 -uj`nproc` --with-gpu-cuda-vers
 cmd_face_platform="scons --with-caffe-gpu use_caffe_gpu=1 -uj`nproc` --with-gpu-cuda-version=cuda8   --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-cudnn-version=cudnn7 --with-trt-version=4.0"
 cmd_cpu="scons -uj`nproc` --with-blas=mkl --with-mkldnn --with-no-reuse-blob"
 #cmd_cpu="scons -uj`nproc` --with-stacktrace=perfect"
-cmd="$cmd_atom --interactive"
-#cmd="$cmd_face_platform --interactive"
-#cmd="$cmd_cpu --interactive"
+cmd="$cmd_atom"
+#cmd="$cmd_face_platform"
+#cmd="$cmd_cpu"
+cmd="$cmd --interactive"
 loop-cat $NAMED_PIPE | $cmd & # READ the text in FIFO file, and WRITE it to stdin of 'cmd'
 
 BUILD_TARGET=${@:2} # ${@:1:2}: get slice of positional parameters, start index 1, length is 2
@@ -88,7 +89,7 @@ do
 		echo "time elapsed since last time build: $INTERVAL"
 		if [ $INTERVAL -gt 10 ]
 		then
-			echo -e "\e[1m\e[33mbuild\e[0m $BUILD_TARGET"
+			echo -e "\e[1m\e[33mbuild\e[0m $BUILD_TARGET at $(date)"
 			echo "build $BUILD_TARGET" >> $NAMED_PIPE # WRITE build command to FIFO file
 			 
 			TIMESTAMP_LAST=$TIMESTAMP
