@@ -19,3 +19,9 @@ for i in *
 do
 	echo $i
 done
+
+while program
+do
+	i=$((i+1))
+	echo "run $i times"
+done

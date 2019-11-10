@@ -1,11 +1,12 @@
 #!/bin/bash
 
 APP_PATH="$HOME/.dev-env"
-git clone https://github.com/Alexoner/dev-env.git "$APP_PATH"
+git clone --recurse-submodules -j8 https://github.com/Alexoner/dev-env.git "$APP_PATH"
 
-DEFAULT_MODULES='shell python vim'
+DEFAULT_MODULES='shell brew tmux python vim node'
 
 cd $APP_PATH || exit 1
+git submodule update --init --recursive # clone recursive submodules
 
 
 #### main entry
@@ -17,7 +18,6 @@ link_files() {
 	for f in \
 		.tmux \
 		.babelrc \
-		.bashrc \
 		.curlrc \
 		.esformatter \
 		.eslintrc* \
@@ -30,6 +30,7 @@ link_files() {
 		.tmux.conf \
 		.pip \
 		.clang-format \
+		.config \
 		bin
 	do
 		ln -sfv "$APP_PATH/$f" "$HOME/"

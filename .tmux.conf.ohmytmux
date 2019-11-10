@@ -7,15 +7,23 @@
 
 # -- general -------------------------------------------------------------------
 
-set -g default-terminal "screen-256color" # colors!
+# shell, use zsh by default
+set-option -g default-shell /bin/zsh
+
+# COLOR SCHEME
+#set -g default-terminal "screen-256color" # colors!
+set -g default-terminal "xterm-256color" # colors!
+#set-option -ga terminal-overrides ",xterm:Tc"
+#set-option -ga terminal-overrides ",screen-256color:Tc"
+set-option -ga terminal-overrides ",xterm-256color:Tc"
 # so that vim solarized colorscheme will work in tmux. Note: you need to change
 # the value 'xterm-256color' to the environment variable $TERM outside your tmux
-# session, because this value is dependent on machines
-set-option -ga terminal-overrides ",xterm-256color:Tc"
-set-option -ga terminal-overrides ",xterm:Tc"
+# session, because this value is dependent on machines. 
+# Heuristically, on linux, use xterm-256color; on mac, use screen-256color !
+
 setw -g xterm-keys on
-set -s escape-time 10                     # faster command sequences
-set -sg repeat-time 600                   # increase repeat timeout
+set -s escape-time 0                     # faster command sequences
+set -sg repeat-time 300                   # increase repeat timeout
 set -s focus-events on
 
 # reset to default key bindings
@@ -163,6 +171,7 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-resurrect' # save and restore tmux session
 set -g @plugin 'tmux-plugins/tmux-continuum' # continuously save and restore with help of tmux-resurrect
 set -g @plugin 'tmux-plugins/tmux-prefix-highlight' # prefix highlight
+set -g @plugin 'tmux-plugins/tmux-yank'
 
 set -g @continuum-restore 'on'
 
@@ -605,7 +614,8 @@ run '~/.tmux/plugins/tpm/tpm'
 # }
 #
 # _apply_bindings() {
-#   tmux_conf_new_window_retain_current_path=${tmux_conf_new_window_retain_current_path:-false}
+#   tmux_conf_new_window_retain_current_path=${tmux_conf_new_window_retain_current_path:-true}
+#   #echo "tmux_conf_new_window_retain_current_path: $tmux_conf_new_window_retain_current_path"
 #   if _is_enabled "$tmux_conf_new_window_retain_current_path"; then
 #     tmux bind c new-window -c '#{pane_current_path}' -a
 #   else

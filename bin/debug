@@ -1,0 +1,8 @@
+#!/bin/bash -x
+
+ARGS=${@:2}
+echo "Using gdb to debug $1 with parameter: ${ARGS}"
+gdb $1 \
+    -ex "set logging on" \
+    -ex "set pagination off" \
+    -ex "run ${ARGS}"
