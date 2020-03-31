@@ -84,23 +84,23 @@ TIMESTAMP_LAST=0
 #$INOTIFYWAIT -mre modify,create,delete,move "$DIRECTORY" | while read path event file
 $INOTIFYWAIT -mre modify "$DIRECTORY" | while read path event file
 do
-    if [[ "$file" =~ .*\.(h|c|cpp|cu)$ ]]
-    then
-        echo "event: " $path $event $file
-        #echo "?" >> $NAMED_PIPE
-        TIMESTAMP=`date +%s`
-        INTERVAL=$(($TIMESTAMP - $TIMESTAMP_LAST))
-        echo "time elapsed since last time build: $INTERVAL"
-        if [ $INTERVAL -gt 10 ]
-        then
-            echo -e "\e[1m\e[33mbuild\e[0m $BUILD_TARGET"
-            echo "build $BUILD_TARGET" >> $NAMED_PIPE # WRITE build command to FIFO file
-             
-            TIMESTAMP_LAST=$TIMESTAMP
-        fi
+	if [[ "$file" =~ .*\.(h|c|cpp|cu)$ ]]
+	then
+		echo "event: " $path $event $file
+		#echo "?" >> $NAMED_PIPE
+		TIMESTAMP=`date +%s`
+		INTERVAL=$(($TIMESTAMP - $TIMESTAMP_LAST))
+		echo "time elapsed since last time build: $INTERVAL"
+		if [ $INTERVAL -gt 10 ]
+		then
+			echo -e "\e[1m\e[33mbuild\e[0m $BUILD_TARGET at $(date)"
+			echo "build $BUILD_TARGET" >> $NAMED_PIPE # WRITE build command to FIFO file
+			 
+			TIMESTAMP_LAST=$TIMESTAMP
+		fi
 
-        #echo <<EOF  >> /proc/$PID/fd/0
-            #build $1
+		#echo <<EOF  >> /proc/$PID/fd/0
+			#build $1
 #EOF
     fi
 done
