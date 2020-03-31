@@ -1,6 +1,6 @@
-[user]
-    name = Alexoner
-    email = onerhao@gmail.com
+;[user]
+    ;name = Alexoner
+    ;email = onerhao@gmail.com
 ;[http]
 	;proxy = socks5://127.0.0.1:1080
 ;[https]
@@ -27,6 +27,8 @@
     # Automatically correct and execute mistyped commands
     autocorrect = 1
 [status]
-	showUntrackedFiles = no
+	;showUntrackedFiles = no
 [oh-my-zsh]
 	hide-dirty = 1
+[diff]
+	tool=meld
