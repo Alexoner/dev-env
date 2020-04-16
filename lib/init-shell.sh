@@ -32,6 +32,7 @@ setup_shell () {
         if [[ $PROMPT =~ '^.+date.+$' ]] # regular expression comparison
         then
             #echo "prompt is already set"
+            :
         else
             export PROMPT="[\$(date +%H:%M:%S)] %{$fg[white]%}%n@%{$fg[green]%}%m%{$reset_color%} ${PROMPT}"
         fi

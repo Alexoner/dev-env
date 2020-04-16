@@ -1,7 +1,7 @@
 #!/bin/sh
 
 setup_tmux() {
-	brew install tmux
+	#brew install tmux
 
 	cat <<- \EOF >> ~/.init.sh
 

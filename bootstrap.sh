@@ -3,7 +3,8 @@
 APP_PATH="$HOME/.dev-env"
 git clone --recurse-submodules -j8 https://github.com/Alexoner/dev-env.git "$APP_PATH"
 
-DEFAULT_MODULES='shell brew tmux python vim node'
+#DEFAULT_MODULES='shell brew tmux python vim node'
+DEFAULT_MODULES='shell tmux python vim node' # shell tmux python must come first!
 
 cd $APP_PATH || exit 1
 git submodule update --init --recursive # clone recursive submodules

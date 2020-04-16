@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 setup_python_mirror () {
 	echo "=====================setting up python mirror=====================$(whoami)"
@@ -52,7 +52,7 @@ setup_python() {
 	#pyenv virtualenv $PYTHON_VERSION alg
 	#pyenv activate alg
 
-	brew uninstall --ignore-dependencies python2
+	#brew uninstall --ignore-dependencies python2
 
 	pip install ipython \
 		jupyter \
@@ -62,5 +62,5 @@ setup_python() {
 	python -m bash_kernel.install
 }
 
-setup_python_mirror
+#setup_python_mirror
 setup_python
