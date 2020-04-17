@@ -7,7 +7,7 @@ by automating it with scripts.
 # installation
 ```shell
 sudo apt install zsh tmux neovim # install zsh tmux vim stack
-# brew install zsh tmux neovim # use with homebrew
+# brew install build-essential zsh tmux neovim # use with homebrew
 bash <(curl https://raw.githubusercontent.com/Alexoner/dev-env/master/bootstrap.sh -L)
 ```
 

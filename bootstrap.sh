@@ -1,6 +1,7 @@
 #!/bin/bash
 
 APP_PATH="$HOME/.dev-env"
+#sudo apt install build-essential zsh tmux neovim
 git clone --recurse-submodules -j8 https://github.com/Alexoner/dev-env.git "$APP_PATH"
 
 #DEFAULT_MODULES='shell brew tmux python vim node'
