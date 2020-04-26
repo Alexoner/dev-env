@@ -16,6 +16,10 @@ setup_python_mirror () {
 setup_python() {
 	echo "=====================setting up python=====================$USER"
 	echo "Installing Python environment manager"
+	#sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+		#libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+		#xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+
 	# install Python version manager as a regular user
 	#curl -L https://raw.github.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
 	git clone git://github.com/pyenv/pyenv.git ~/.pyenv
@@ -44,7 +48,7 @@ setup_python() {
 	. "$HOME/.init.sh"
 
 	echo installing actual Python version
-	PYTHON_VERSION=3.6.0
+	PYTHON_VERSION=3.8.2
 	# build CPython with shared library
 	env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install $PYTHON_VERSION
 	pyenv global $PYTHON_VERSION

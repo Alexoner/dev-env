@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+#sudo apt install libunwind8 libcurl3 g++ zip make libsqlite3-dev
+#sudo apt install zsh tmux neovim
+
 APP_PATH="$HOME/.dev-env"
 #sudo apt install build-essential zsh tmux neovim
 git clone --recurse-submodules -j8 https://github.com/Alexoner/dev-env.git "$APP_PATH"

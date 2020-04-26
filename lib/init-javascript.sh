@@ -4,7 +4,8 @@ setup_javascript() {
 	echo "===================== setting up nodejs =====================$USER"
 	echo "Installing node environment manager NVM"
 	# install Python version manager as a regular user
-	brew install nvm
+	#brew install nvm
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 	mkdir ~/.nvm
 
 	# use \EOF to avoid evaluating variables
@@ -12,7 +13,8 @@ setup_javascript() {
 
 	######################### nvm configuration #########################
 	export NVM_DIR="$HOME/.nvm"
-	. "/home/hdu/.linuxbrew/opt/nvm/nvm.sh"
+	export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}"  ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+	[ -s "$NVM_DIR/nvm.sh"  ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 
 	EOF
@@ -21,11 +23,11 @@ setup_javascript() {
 	. "$HOME/.init.sh"
 
 	echo "installing actual nodejs"
-	NODE_VERSION="v8.11.3"
+	NODE_VERSION="v10.14.1"
 	nvm install $NODE_VERSION
 	nvm use $NODE_VERSION
 
-	brew uninstall --ignore-dependencies python2
+	#brew uninstall --ignore-dependencies python2
 }
 
 setup_javascript

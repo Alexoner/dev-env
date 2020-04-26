@@ -6,8 +6,9 @@ by automating it with scripts.
 
 # installation
 ```shell
+sudo apt install libunwind8 libcurl3 g++ zip make libsqlite3-dev
 sudo apt install zsh tmux neovim # install zsh tmux vim stack
-# brew install build-essential zsh tmux neovim # use with homebrew
+# brew install zsh tmux neovim # use with homebrew
 bash <(curl https://raw.githubusercontent.com/Alexoner/dev-env/master/bootstrap.sh -L)
 ```
 
