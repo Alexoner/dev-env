@@ -4,5 +4,6 @@ echo internal IP
 ifconfig |grep inet |awk '$1=="inet" {print $2}'
 
 echo "\r\nremote IP"
-curl ipecho.net/plain; echo 
+curl -L https://www.cloudflare.com/cdn-cgi/trace
+# curl ipecho.net/plain; echo 
 #curl ip.cn; echo
