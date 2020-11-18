@@ -16,6 +16,7 @@ setup_shell () {
 
 	# source a separate init script
 	touch $HOME/.init.sh
+	# heredoc << EOF. <<- for tab indentation, EOF is the delimiter, \EOF stops environment variable being evaluated.
 	cat <<-\EOF >> $HOME/.init.sh
 	# source customized initailization script
 	if [ -f $HOME/.init.local.sh ]
@@ -73,6 +74,18 @@ EOF
 if [ "$(uname -s)" == "Linux" ]
 then
     sudo apt install -y zsh tmux
+	uname -a |grep 'microsoft' # check whether the linux is WSL(windows subsystem for Linux)
+	if [ $? = 0 ]
+	then
+		echo "Running in WSL"
+		cat <<- \EOF >> ~/.init.sh
+		LoadVS () {
+			# load visual studio environment variables
+			export PATH=$(find "/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/" -iname 'MSBuild.exe'|while read f; do echo $(dirname $f); done |head -n 2|sort |head -n 1):$PATH
+			export PATH=$(find "/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/" -iname 'vstest.console.exe'|while read f; do echo $(dirname $f); done |head -n 2|sort |head -n 1):$PATH
+		}
+		EOF
+	fi
 fi
 
 setup_shell
