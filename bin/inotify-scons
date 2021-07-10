@@ -30,16 +30,16 @@ program_exists() {
 # download and install inotifywait tool
 if ! program_exists inotifywait
 then
-	echo "inotifywait needs to be installed first"
-	mkdir -p /tmp && cd /tmp
-	curl -LO "http://github.com/downloads/rvoicilas/inotify-tools/inotify-tools-3.14.tar.gz"
-	tar xfv inotify-tools-3.14.tar.gz
-	cd inotify-tools-3.14
-	./configure --prefix=$HOME/
-	make install
-	INOTIFYWAIT=$USER/bin/inotifywait
+    echo "inotifywait needs to be installed first"
+    mkdir -p /tmp && cd /tmp
+    curl -LO "http://github.com/downloads/rvoicilas/inotify-tools/inotify-tools-3.14.tar.gz"
+    tar xfv inotify-tools-3.14.tar.gz
+    cd inotify-tools-3.14
+    ./configure --prefix=$HOME/
+    make install
+    INOTIFYWAIT=$USER/bin/inotifywait
 else 
-	INOTIFYWAIT=inotifywait
+    INOTIFYWAIT=inotifywait
 fi
 
 DATE=`date +'%Y-%m-%d_%H:%M:%s'`
@@ -53,10 +53,10 @@ mkfifo $NAMED_PIPE
 
 # indefinitely read from the named pipe file, never send EOF to stdout
 loop-cat() {
-	while true
-	do
-		cat "$1"
-	done
+    while true
+    do
+        cat "$1"
+    done
 }
 
 # will tailf pipe file do? NO... why?
@@ -64,10 +64,14 @@ cmd_atom="scons --with-caffe-gpu use_caffe_gpu=1 -uj`nproc` --with-gpu-cuda-vers
 #cmd_face_platform="scons -uj`nproc` release=0 license=0 use_caffe_gpu=1 --with-caffe-gpu --with-gpu-cuda-version=cuda9 --with-use-opencv-gpu-mat --with-opencv-version=3.2 --with-use-easy-rtsp --with-tf-gpu --with-cudnn-version=cudnn7 --with-trt-version=5.0"
 cmd_face_platform="scons --with-caffe-gpu use_caffe_gpu=1 -uj`nproc` --with-gpu-cuda-version=cuda8   --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-cudnn-version=cudnn7 --with-trt-version=4.0"
 cmd_cpu="scons -uj`nproc` --with-blas=mkl --with-mkldnn --with-no-reuse-blob"
+cmd_024="scons --with-caffe-gpu use_caffe_gpu=1 -uj200 --distributed --with-gpu-cuda-version=cuda10.1   --with-opencv-version=3.2 --with-use-opencv-gpu-mat --with-cudnn-version=cudnn7.5 --with-trt-version=5.1 --with-video-codec=8.1"
 #cmd_cpu="scons -uj`nproc` --with-stacktrace=perfect"
-cmd="$cmd_atom"
+
+#cmd="$cmd_atom"
 #cmd="$cmd_face_platform"
+cmd="$cmd_024"
 #cmd="$cmd_cpu"
+
 cmd="$cmd --interactive"
 loop-cat $NAMED_PIPE | $cmd & # READ the text in FIFO file, and WRITE it to stdin of 'cmd'
 
@@ -98,7 +102,7 @@ do
 		#echo <<EOF  >> /proc/$PID/fd/0
 			#build $1
 #EOF
-	fi
+    fi
 done
 
 # FIXME: writing to stdin file /proce/$PID/fd/0 doesn't work, why?
@@ -106,13 +110,14 @@ done
 # use while to loop
 #while $INOTIFYWAIT -re modify "$DIRECTORY"
 #do
-	#if [[ "$EVENT" =~ ".*\.(h|c|cpp|cu)" ]]
-	#then
-		#echo "event: $EVENT" |tee -a /dev/null
-		#echo "build $1\n" |tee -a /proc/$PID/fd/0
-		##echo "build $1\n" >> /proc/$PID/fd/0
-		##ssh -t ficusromania 'bash -s' <<EOF
-		##echo "build $1" >> /proc/$PID/fd/0
+    #if [[ "$EVENT" =~ ".*\.(h|c|cpp|cu)" ]]
+    #then
+        #echo "event: $EVENT" |tee -a /dev/null
+        #echo "build $1\n" |tee -a /proc/$PID/fd/0
+        ##echo "build $1\n" >> /proc/$PID/fd/0
+        ##ssh -t ficusromania 'bash -s' <<EOF
+        ##echo "build $1" >> /proc/$PID/fd/0
 ##EOF
-	#fi
+    #fi
 #done
+

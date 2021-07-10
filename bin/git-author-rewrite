@@ -17,8 +17,8 @@
 #' --tag-name-filter cat -- --branches --tags
 
 OLD_EMAIL=${1:-"onerhao@gmail.com"}
-NAME=${2:-"nobody"}
-EMAIL=${3:-"nobody@yitu-inc.com"}
+NAME=${2:-"user"}
+EMAIL=${3:-"user@company-inc.com"}
 git filter-branch --env-filter "
 OLD_EMAIL='$OLD_EMAIL'
 CORRECT_NAME='$NAME'
