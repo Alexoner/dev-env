@@ -12,7 +12,7 @@ git clone --recurse-submodules -j8 https://github.com/Alexoner/dev-env.git "$APP
 # shell tmux python must come first! And neovim depends on some modules
 DEFAULT_MODULES='shell tmux python javascript go vim'
 
-cd $APP_PATH || exit 1
+cd "$APP_PATH" || exit 1
 git submodule update --init --recursive # clone recursive submodules
 
 
