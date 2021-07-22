@@ -44,7 +44,7 @@ link_files() {
 	done
 
 	mkdir -p ~/.config/
-	ln -sfv $HOME/.dev-env/.config/* ~/.config/
+	# ln -sfv $HOME/.dev-env/.config/* ~/.config/
 
 }
 

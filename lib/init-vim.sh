@@ -16,6 +16,8 @@ setup_vim () {
     alias vi="vim"
     alias vim="nvim"
     alias vimdiff="nvim -d"
+
+	ln -sfv $HOME/.dev-env/.config/nvim/coc-settings.json ~/.config/nvim/
 EOF
 }
 
