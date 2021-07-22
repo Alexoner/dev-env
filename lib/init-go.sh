@@ -8,7 +8,7 @@ setup_go() {
 
 	bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
 
-	cat << \EOF > $HOME/.init.sh
+	cat << \EOF >> $HOME/.init.sh
 [[ -s "/home/haodu/.gvm/scripts/gvm"  ]] && source "/home/haodu/.gvm/scripts/gvm"
 EOF
 
@@ -25,7 +25,7 @@ EOF
 
 if [ $(uname -s) == "Linux" ]
 then
-	apt-get install bison
+	sudo apt-get install -y bison
 fi
 
 setup_go

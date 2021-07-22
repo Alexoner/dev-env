@@ -29,9 +29,10 @@ setup_shell () {
 
 	export PATH=$PATH:$HOME/bin
 
-	################################# SHELL PROMPT configuration ########################
+	################################# SHELL configuration ###############################
 	if [ $SHELL = "/bin/zsh" ]
 	then
+		################################# SHELL prompt configuration ####################
 		if [[ $PROMPT =~ '^.+date.+$' ]] # regular expression comparison
 		then
 			#echo "prompt is already set"
@@ -39,7 +40,14 @@ setup_shell () {
 		else
 			export PROMPT="[\$(date +%H:%M:%S)] %{$fg[white]%}%n@%{$fg[green]%}%m%{$reset_color%} ${PROMPT}"
 		fi
+		################################# SHELL HISTORY configuration ###################
+		setopt HIST_IGNORE_ALL_DUPS # `man zshoptions`. If a new command line being added to the history list duplicates an older one, the older command is removed from the list (even if it is not the previous event). But this only works with `history` command, not the safed history file.
+		setopt HIST_IGNORE_DUPS     # If a new command line being added to the history list duplicates an older one, the older command is removed from the list (even if it is not the previous event).
+		setopt HIST_IGNORE_SPACE    # man zshoptions
+		setopt HIST_FIND_NO_DUPS    # when searching for history entries, do not display duplicates.
+
 	fi
+
 
 	################################### Tmux ############################################
 	export tmux_conf_new_window_retain_current_path=true
@@ -84,6 +92,8 @@ then
 			export PATH=$(find "/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/" -iname 'MSBuild.exe'|while read f; do echo $(dirname $f); done |head -n 2|sort |head -n 1):$PATH
 			export PATH=$(find "/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/" -iname 'vstest.console.exe'|while read f; do echo $(dirname $f); done |head -n 2|sort |head -n 1):$PATH
 		}
+
+		export DISPLAY=:0  # OAuth2 lib can open windows browser
 		EOF
 	fi
 fi
