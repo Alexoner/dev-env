@@ -43,6 +43,9 @@ link_files() {
 		ln -sfv "$APP_PATH/$f" "$HOME/"
 	done
 
+	mkdir -p ~/.config/
+	ln -sfv $HOME/.dev-env/.config/* ~/.config/
+
 }
 
 # shell initialization skeleton should be automatically generated after

@@ -32,7 +32,8 @@ setup_javascript() {
 	. "$HOME/.init.sh"
 
 	echo "installing actual nodejs"
-	NODE_VERSION="v10.14.1"
+	# NODE_VERSION="v10.14.1"
+	NODE_VERSION="stable"
 	nvm install $NODE_VERSION
 	nvm use $NODE_VERSION
 
