@@ -23,7 +23,6 @@ link_files() {
         #--exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
 	echo "creating symbol links of home files"
 	for f in \
-		.tmux \
 		.babelrc \
 		.curlrc \
 		.esformatter \
@@ -34,7 +33,9 @@ link_files() {
 		.gitmodules \
 		.pylintrc \
 		.tern-project \
+		.tmux \
 		.tmux.conf \
+		.tmux.sh \
 		.pip \
 		.clang-format \
 		.config \
