@@ -232,7 +232,8 @@ tmux_conf_theme_right_separator_sub="|"
 tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
 tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} "
 
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %Z %Y-%m-%d %H:%M:%S | #{username}#{root} | #{hostname} "
+# customization
+tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %Z %Y-%m-%d %H:%M:%S | #(whoami)#{root} | @#H "
 
 # local custom settings
 #tmux_conf_theme_status_right=' #{pairing}#{prefix} #[fg=#00ff00,bg=#000000] #{?client_prefix,#[reverse]<Prefix>#[noreverse] ,} #{battery_status} #{battery_bar} #{battery_percentage}  , %Z %Y-%m-%d %H:%M:%S | #{username} | #{hostname} ' # Tmux expands time formats with strftime in status-left and status-right before it expands #(…) and other sharp escape sequences
