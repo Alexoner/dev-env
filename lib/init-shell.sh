@@ -52,6 +52,9 @@ setup_shell () {
 	################################### Tmux ############################################
 	export tmux_conf_new_window_retain_current_path=true
 
+	################################### bindkey ############################################
+	bindkey "^P" up-line-or-search # equivalent to Up
+	bindkey "^N" down-line-or-search # equivalent to Down
 
 	################################### alias ############################################
 	alias sl=ls
