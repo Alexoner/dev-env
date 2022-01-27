@@ -40,6 +40,11 @@ setup_shell () {
 		else
 			export PROMPT="[\$(date +%H:%M:%S)] %{$fg[white]%}%n@%{$fg[green]%}%m%{$reset_color%} ${PROMPT}"
 		fi
+
+		################################### bindkey ############################################
+		bindkey "^P" up-line-or-search # equivalent to Up
+		bindkey "^N" down-line-or-search # equivalent to Down
+
 		################################# SHELL HISTORY configuration ###################
 		setopt HIST_IGNORE_ALL_DUPS # `man zshoptions`. If a new command line being added to the history list duplicates an older one, the older command is removed from the list (even if it is not the previous event). But this only works with `history` command, not the safed history file.
 		setopt HIST_IGNORE_DUPS     # If a new command line being added to the history list duplicates an older one, the older command is removed from the list (even if it is not the previous event).
@@ -51,10 +56,6 @@ setup_shell () {
 
 	################################### Tmux ############################################
 	export tmux_conf_new_window_retain_current_path=true
-
-	################################### bindkey ############################################
-	bindkey "^P" up-line-or-search # equivalent to Up
-	bindkey "^N" down-line-or-search # equivalent to Down
 
 	################################### alias ############################################
 	alias sl=ls
