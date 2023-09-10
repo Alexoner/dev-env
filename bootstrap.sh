@@ -63,4 +63,4 @@ else
 fi;
 
 # use ${x:-y} syntax for logic OR operation
-bash lib/initialize.sh --force ${@:-${DEFAULT_MODULES}}
+bash -x lib/initialize.sh --force ${@:-${DEFAULT_MODULES}}
