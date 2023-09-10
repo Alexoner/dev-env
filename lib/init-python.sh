@@ -22,10 +22,11 @@ setup_python() {
 
 	# install Python version manager as a regular user
 	#curl -L https://raw.github.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
-	git clone git://github.com/pyenv/pyenv.git ~/.pyenv
-	git clone git://github.com/pyenv/pyenv-update.git ~/.pyenv/plugins/pyenv-update
-	#git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
-	git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+	# git clone git://github.com/pyenv/pyenv.git ~/.pyenv
+	# git clone git://github.com/pyenv/pyenv-update.git ~/.pyenv/plugins/pyenv-update
+	# git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+	# git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+ 	brew install pyenv
 
 	# use \EOF to avoid evaluating variables
 	cat <<- \EOF >> ~/.init.sh
@@ -71,7 +72,7 @@ if [ $(uname -s) == "Linux" ]
 then
 	sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
 		libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-		xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+		xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
 fi
 
 #setup_python_mirror
