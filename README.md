@@ -10,7 +10,7 @@ by automating it with scripts.
 sudo apt install libunwind8 g++ zip make libsqlite3-dev
 sudo apt install zsh tmux neovim # install zsh tmux vim stack
 # brew install zsh tmux neovim # use with homebrew
-bash <(curl https://raw.githubusercontent.com/Alexoner/dev-env/master/bootstrap.sh -L)
+bash -x <(curl https://raw.githubusercontent.com/Alexoner/dev-env/master/bootstrap.sh -L)
 ```
 
 ## Backup
