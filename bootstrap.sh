@@ -6,6 +6,11 @@
 
 APP_PATH="$HOME/.dev-env"
 #sudo apt install build-essential zsh tmux neovim
+
+if [ "$1" == "--force" -o "$1" == "-f" ]; then
+    rm -rf ~/.dev-env
+fi
+
 git clone --recurse-submodules -j8 https://github.com/Alexoner/dev-env.git "$APP_PATH"
 
 # shell tmux python must come first! And neovim depends on some modules
@@ -53,7 +58,6 @@ link_files() {
 # that file
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
-    rm -rf ~/.dev-env
     link_files;
 else
     read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
