@@ -8,9 +8,8 @@ APP_PATH="$HOME/.dev-env"
 #sudo apt install build-essential zsh tmux neovim
 git clone --recurse-submodules -j8 https://github.com/Alexoner/dev-env.git "$APP_PATH"
 
-#DEFAULT_MODULES='shell brew tmux python vim node'
 # shell tmux python must come first! And neovim depends on some modules
-DEFAULT_MODULES='shell tmux python javascript go vim ops'
+DEFAULT_MODULES='shell brew tmux python javascript go vim ops'
 
 cd "$APP_PATH" || exit 1
 git submodule update --init --recursive # clone recursive submodules
