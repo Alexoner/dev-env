@@ -10,6 +10,7 @@ init_env() {
     #while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
     # Run sections based on command line arguments
+    # to loop through arguments except the first one: "${@:2}"
     for ARG in "$@"
     do
         if [ "$ARG" == "bootstrap" ] || [ "$ARG" == "all" ]; then
@@ -67,6 +68,8 @@ init_env() {
             echo "------------------------------"
             echo ""
             lib/init-brew.sh
+        elif [ "$ARG" == "--force" ]; then
+            echo "WARNING: Installing by force!"
         else
             # general initialize script
             echo ""
