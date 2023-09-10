@@ -8,7 +8,7 @@ APP_PATH="$HOME/.dev-env"
 #sudo apt install build-essential zsh tmux neovim
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
-    rm -rf ~/.dev-env
+    rm -rfv ~/.dev-env
 fi
 
 git clone --recurse-submodules -j8 https://github.com/Alexoner/dev-env.git "$APP_PATH"
