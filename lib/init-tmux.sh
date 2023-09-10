@@ -13,9 +13,9 @@ setup_tmux() {
 	EOF
  	# install https://github.com/gpakosz/.tmux from upstream
 	cd
-	git clone https://github.com/gpakosz/.tmux.git
-	ln -s -f .tmux/.tmux.conf
-	~/.dev-env/.tmux.conf.local ~/
+	git clone https://github.com/gpakosz/.tmux.git .tmux-env
+	ln -s -f .tmux-env/.tmux.conf
+	# ~/.dev-env/.tmux.conf.local ~/
 }
 
 if [ "$(uname -s)" == "Linux" ]

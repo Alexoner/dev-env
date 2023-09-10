@@ -67,7 +67,7 @@ init_env() {
             echo "This might awhile to complete, as some formulae need to be installed from source."
             echo "------------------------------"
             echo ""
-            bash -x lib/init-brew.sh
+            bash lib/init-brew.sh
         elif [ "$ARG" == "--force" ]; then
             echo "WARNING: Installing by force!"
         else

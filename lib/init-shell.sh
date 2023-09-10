@@ -1,13 +1,13 @@
 #!/bin/bash
 
 DIR=$(dirname $0)
-source $DIR/utils.sh
+# source $DIR/utils.sh
 
 setup_shell () {
     echo "=====================setting up zsh=====================$(whoami)"
     echo "REMEMBER: EXIT ZSH AFTER INSTALLING oh-my-zsh to proceed..."
     # install oh-my-zsh
-    export ZSH=""
+    # export ZSH=""
     cd "$HOME"
     rm -rf ~/.oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -93,15 +93,15 @@ then
     if [ $? = 0 ]
     then
         echo "Running in WSL"
-        cat <<- \EOF >> ~/.init.sh
-        LoadVS () {
-            # load visual studio environment variables
-            export PATH=$(find "/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/" -iname 'MSBuild.exe'|while read f; do echo $(dirname $f); done |head -n 2|sort |head -n 1):$PATH
-            export PATH=$(find "/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/" -iname 'vstest.console.exe'|while read f; do echo $(dirname $f); done |head -n 2|sort |head -n 1):$PATH
-        }
+		cat <<- \EOF >> ~/.init.sh
+		LoadVS () {
+			# load visual studio environment variables
+			export PATH=$(find "/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/" -iname 'MSBuild.exe'|while read f; do echo $(dirname $f); done |head -n 2|sort |head -n 1):$PATH
+			export PATH=$(find "/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/" -iname 'vstest.console.exe'|while read f; do echo $(dirname $f); done |head -n 2|sort |head -n 1):$PATH
+		}
 
-        export DISPLAY=:0  # OAuth2 lib can open windows browser
-        EOF
+		export DISPLAY=:0  # OAuth2 lib can open windows browser
+		EOF
     fi
 fi
 
