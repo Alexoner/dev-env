@@ -10,7 +10,7 @@ setup_brew() {
 
 	cat <<-\EOF >> $HOME/.init.sh
 	##################### linux brew ############################
-	export PATH="/home/linuxbrew/.linuxbrew/bin/"  # new brew path
+	export PATH=$PATH:"/home/linuxbrew/.linuxbrew/bin/"  # new brew path
 	# export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 	# export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 	EOF
