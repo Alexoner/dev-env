@@ -7,14 +7,16 @@
 APP_PATH="$HOME/.dev-env"
 #sudo apt install build-essential zsh tmux neovim
 
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
-    rm -rfv ~/.dev-env
-fi
+#if [ "$1" == "--force" -o "$1" == "-f" ]; then
+    echo "Removing previous installation"
+    rm -rf ~/.dev-env
+#fi
 
 git clone --recurse-submodules -j8 https://github.com/Alexoner/dev-env.git "$APP_PATH"
 
 # shell tmux python must come first! And neovim depends on some modules
-DEFAULT_MODULES='shell brew tmux python javascript go vim ops'
+# DEFAULT_MODULES='shell brew tmux python javascript go vim ops'
+DEFAULT_MODULES='shell brew tmux vim'
 
 cd "$APP_PATH" || exit 1
 git submodule update --init --recursive # clone recursive submodules

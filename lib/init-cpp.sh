@@ -8,7 +8,7 @@ then
 	sudo apt install -y build-essential tar curl zip unzip \
 		libssl-dev zlib1g-dev libbz2-dev \
 		libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-		xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+		xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
 fi
 
 
