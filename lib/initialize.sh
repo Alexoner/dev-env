@@ -26,28 +26,28 @@ init_env() {
             echo "Configuring Shell environment."
             echo "------------------------------"
             echo ""
-            lib/init-shell.sh
+            bash -x lib/init-shell.sh
         elif [ "$ARG" == 'python' ] || [ "$ARG" == 'all' ]; then
             echo ""
             echo "------------------------------"
             echo "Installing Python environment."
             echo "------------------------------"
             echo ""
-            lib/init-python.sh
+            bash -x lib/init-python.sh
         elif [ "$ARG" == 'vim' ] || [ "$ARG" == 'all' ]; then
             echo ""
             echo "------------------------------"
             echo "Installing Python environment."
             echo "------------------------------"
             echo ""
-            lib/init-vim.sh
+            bash -x lib/init-vim.sh
         elif [ "$ARG" == 'ml' ] || [ "$ARG" == 'all' ]; then
             echo ""
             echo "------------------------------"
             echo "Installing machine learning environment."
             echo "------------------------------"
             echo ""
-            lib/init-ml.sh
+            bash -x lib/init-ml.sh
         elif [ "$ARG" == "osx" ] || [ "$ARG" == "all" ]; then
             # Run the osxprep.sh Script
             echo ""
@@ -55,7 +55,7 @@ init_env() {
             echo "Updating OSX and installing Xcode command line tools"
             echo "------------------------------"
             echo ""
-            lib/init-osx.sh
+            bash -x lib/init-osx.sh
         elif [ "$ARG" == "brew" ] || [ "$ARG" == "all" ]; then
             # Run the brew.sh Script
             # For a full listing of installed formulae and apps, refer to
@@ -67,7 +67,7 @@ init_env() {
             echo "This might awhile to complete, as some formulae need to be installed from source."
             echo "------------------------------"
             echo ""
-            lib/init-brew.sh
+            bash -x lib/init-brew.sh
         elif [ "$ARG" == "--force" ]; then
             echo "WARNING: Installing by force!"
         else
