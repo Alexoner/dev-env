@@ -10,16 +10,15 @@ setup_javascript() {
 	#brew install nvm
 	if [ "$(uname -s)" == "Linux" ]
 	then
-		curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+		curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 		mkdir ~/.nvm
 
 		# use \EOF to avoid evaluating variables
 		cat <<- \EOF >> ~/.init.sh
 
 		######################### nvm configuration #########################
-		export NVM_DIR="$HOME/.nvm"
-		export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}"  ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-		[ -s "$NVM_DIR/nvm.sh"  ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+		export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 
 		EOF

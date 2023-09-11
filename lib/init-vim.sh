@@ -5,7 +5,8 @@ setup_vim () {
     echo "===================== configuring vim =====================$(whoami)"
     . "$HOME/.init.sh"
     #brew install neovim
-    pip install pynvim # neovim
+    # pip install pynvim # neovim
+    pip install neovim || echo "'pip install neovim failed', you may try manually later."
     curl https://raw.githubusercontent.com/Alexoner/vimde/master/bootstrap.sh -L |sh -s
     ln -sfv $HOME/.dev-env/.config/nvim/coc-settings.json ~/.config/nvim/
     #exit
