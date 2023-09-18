@@ -10,6 +10,8 @@ unbind C-a
 set -g prefix C-a
 bind C-a send-prefix
 
+set-option -sa terminal-features ',xterm-256color:RGB'
+
 
 tmux_conf_new_window_retain_current_path=true
 tmux_conf_new_pane_retain_current_path=true

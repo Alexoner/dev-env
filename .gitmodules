@@ -7,5 +7,5 @@
 	url = https://github.com/tmux-plugins/tpm.git
 [submodule "NvChad_custom"]
 	path = NvChad_custom
-	url = git@github.com:Alexoner/NvChad_custom.git
+	url = https://github.com/Alexoner/NvChad_custom.git
 	branch = master

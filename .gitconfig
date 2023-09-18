@@ -32,3 +32,6 @@
 	hide-dirty = 1
 [diff]
 	tool=meld
+[user]
+	name = Alexoner
+	emal = haoisworking@gmail.com
