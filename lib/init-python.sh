@@ -32,9 +32,9 @@ setup_python() {
 	cat <<- \EOF >> ~/.init.sh
 
 	########################## pyenv configuration #########################
-
+  eval "$(pyenv init -)"
 	EOF
-	
+
 	echo "sourcing $HOME/.init.sh"
 	. "$HOME/.init.sh"
 
